@@ -1,0 +1,99 @@
+﻿<UserControl x:Class="AMaungUs.FFUMaker.Views.CheckListPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AMaungUs.FFUMaker.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="720" d:DesignWidth="1200">
+    <Grid>
+        <StackPanel Margin="40">
+            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                <TextBlock Text="" FontSize="18" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                <TextBlock Text="Windows Assessment and Deployment Kit (Windows ADK)" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="20,0,0,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"  HorizontalAlignment="Left" Margin="36,0,0,0">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="" FontSize="18" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                    <TextBlock Text="Download" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="52,0,0,0">
+                    <TextBlock Text="" FontSize="18" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                    <TextBlock Text="Location on this system" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                </StackPanel>
+            </StackPanel>
+            <TextBlock Margin="48,0,0,0" Text="C:\Program Files (x86)\Windows Kits\10\Assessment and Deployment Kit\Deployment Tools" FontSize="12" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" />
+            
+
+            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                <TextBlock Text="" FontSize="18" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                <TextBlock Text="Windows PE and add-on for ADK" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="20,0,0,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"  HorizontalAlignment="Left" Margin="36,0,0,0">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="" FontSize="18" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                    <TextBlock Text="Download" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="52,0,0,0">
+                    <TextBlock Text="" FontSize="18" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                    <TextBlock Text="Location on this system" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                </StackPanel>
+            </StackPanel>
+            <TextBlock Margin="48,0,0,0" Text="" FontSize="12" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" />
+
+
+            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                <TextBlock Text="" FontSize="18" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                <TextBlock Text="Windows Drive Kit (Windows WDK)" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="20,0,0,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"  HorizontalAlignment="Left" Margin="36,0,0,0">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="" FontSize="18" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                    <TextBlock Text="Download" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="52,0,0,0">
+                    <TextBlock Text="" FontSize="18" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                    <TextBlock Text="Location on this system" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                </StackPanel>
+            </StackPanel>
+            <TextBlock Margin="48,0,0,0" Text="" FontSize="12" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" />
+
+
+            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                <TextBlock Text="" FontSize="18" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                <TextBlock Text="Windows IoT Core Packages" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="20,0,0,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"  HorizontalAlignment="Left" Margin="36,0,0,0">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="" FontSize="18" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                    <TextBlock Text="Download" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="52,0,0,0">
+                    <TextBlock Text="" FontSize="18" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                    <TextBlock Text="Location on this system" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                </StackPanel>
+            </StackPanel>
+            <TextBlock Margin="48,0,0,0" Text="" FontSize="12" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" />
+
+
+            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                <TextBlock Text="" FontSize="18" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                <TextBlock Text="IoT Core ADK Add-on" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="20,0,0,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"  HorizontalAlignment="Left" Margin="36,0,0,0">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="" FontSize="18" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                    <TextBlock Text="Download" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="52,0,0,0">
+                    <TextBlock Text="" FontSize="18" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                    <TextBlock Text="Location on this system" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                </StackPanel>
+            </StackPanel>
+            <TextBlock Margin="48,0,0,0" Text="" FontSize="12" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" />
+
+
+        </StackPanel>
+
+    </Grid>
+</UserControl>

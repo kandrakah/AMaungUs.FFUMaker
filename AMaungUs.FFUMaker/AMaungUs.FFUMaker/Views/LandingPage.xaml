@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="AMaungUs.FFUMaker.Views.LandingPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AMaungUs.FFUMaker.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="720" d:DesignWidth="1200">
+    <Grid>
+        <StackPanel Margin="40">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Image Source="/AMaungUs.FFUMaker;component/Assets/windows-icon.png" Width="240" Height="240"/>
+                <TextBlock Text="IoT Core" FontSize="48" Foreground="White" FontFamily="Segoe UI Light" RenderTransformOrigin="0.5,0.5">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="270"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+            </StackPanel>
+            <Viewbox >
+                <TextBlock Text="Welcome to Windows IoT Core FFU Creation Tool" Foreground="White" FontFamily="Segoe UI Light" />
+            </Viewbox>
+            <TextBlock Text="This tool is a GUI wrapper for Paramesh Babu's iot-adk-addonkit. You can clone the addon kit from the link below." FontSize="24" TextWrapping="Wrap" Foreground="White" FontFamily="Segoe UI Light"/>
+            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                <Image Source="/AMaungUs.FFUMaker;component/Assets/Git-Icon-White.png" Width="64" Height="64"/>
+                <TextBlock Text="https://github.com/ms-iot/iot-adk-addonkit" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                
+            </StackPanel>
+        </StackPanel>
+            
+    </Grid>
+</UserControl>
