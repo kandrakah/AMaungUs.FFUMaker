@@ -54,5 +54,12 @@ namespace AMaungUs.FFUMaker
             MainDisplay.Children.Clear();
             MainDisplay.Children.Add(pageToDisplay);
         }
+
+        private void GridInfoImage_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            AboutPage pageToDisplay = new AboutPage();
+            MainDisplay.Children.Clear();
+            MainDisplay.Children.Add(pageToDisplay);
+        }
     }
 }

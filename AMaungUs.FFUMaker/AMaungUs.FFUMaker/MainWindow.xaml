@@ -62,11 +62,27 @@
                     <ColumnDefinition Width="32"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="" FontFamily="Segoe MDL2 Assets" TextAlignment="Center" VerticalAlignment="Center" FontSize="18" Foreground="White" Grid.Column="0" Width="32"/>
+                <TextBlock Text="" FontFamily="Segoe MDL2 Assets" TextAlignment="Center" VerticalAlignment="Center" FontSize="18" Foreground="White" Grid.Column="0" Width="32"/>
+                <TextBlock Text="Hello World" FontFamily="Segoe UI Light" TextAlignment="Left" Padding="12,0,12,0" VerticalAlignment="Center" FontSize="18" Foreground="White" Grid.Column="1" Visibility="Collapsed"/>
+            </Grid>
+            <Grid x:Name="GridFinalImage" Width="auto" Height="36" Background="Transparent" MouseDown="GridTestImage_MouseDown" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="32"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="" FontFamily="Segoe MDL2 Assets" TextAlignment="Center" VerticalAlignment="Center" FontSize="18" Foreground="White" Grid.Column="0" Width="32"/>
                 <TextBlock Text="Hello World" FontFamily="Segoe UI Light" TextAlignment="Left" Padding="12,0,12,0" VerticalAlignment="Center" FontSize="18" Foreground="White" Grid.Column="1" Visibility="Collapsed"/>
             </Grid>
         </ListView>
-        
-        
+        <Grid x:Name="GridInfoImage" Width="auto" Height="36" Background="Transparent"  Margin="8,0,0,8" VerticalAlignment="Bottom" MouseDown="GridInfoImage_MouseDown">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="32"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="" FontFamily="Segoe MDL2 Assets" TextAlignment="Center" VerticalAlignment="Center" FontSize="18" Foreground="White" Grid.Column="0" Width="32"/>
+            <TextBlock Text="Hello World" FontFamily="Segoe UI Light" TextAlignment="Left" Padding="12,0,12,0" VerticalAlignment="Center" FontSize="18" Foreground="White" Grid.Column="1" Visibility="Collapsed"/>
+        </Grid>
+
+
     </Grid>
 </fw:AcrylicWindow>
