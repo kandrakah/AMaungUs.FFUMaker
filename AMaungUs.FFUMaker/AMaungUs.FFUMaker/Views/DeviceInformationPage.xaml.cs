@@ -33,13 +33,13 @@ namespace AMaungUs.FFUMaker.Views
                 switch (text.ToLower())
                 {
                     case "raspberry pi":
-                        imgDevice.Source = new BitmapImage(new Uri(@"/AMaungUs.FFUMaker;component/Assets/boards/raspberrypi.png"));
+                        //imgDevice.Source = new BitmapImage(new Uri(@"/AMaungUs.FFUMaker;component/Assets/boards/raspberrypi.png"));
                         break;
                     case "dragon board 410c":
-                        imgDevice.Source = new BitmapImage(new Uri("Assets/boards/dragonboard.png"));
+                        //imgDevice.Source = new BitmapImage(new Uri("Assets/boards/dragonboard.png"));
                         break;
                     default:
-                        imgDevice.Source = new BitmapImage(new Uri("Assets/boards/intelbsw.png"));
+                        //imgDevice.Source = new BitmapImage(new Uri("Assets/boards/intelbsw.png"));
                         break;
                 }
         }

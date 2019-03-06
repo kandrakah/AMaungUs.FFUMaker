@@ -12,7 +12,7 @@
                 <TextBlock Text="Device Type" x:Name="TabDevArch" FontSize="32" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="20,0,0,0"/>
                 <TextBlock Text="SMBios Information" x:Name="TabSMBios" FontSize="32" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="20,0,0,0"/>
             </StackPanel>
-            <StackPanel Visibility="Visible">
+            <StackPanel x:Name="spDeviceType" Visibility="Collapsed">
                 <TextBlock Text="Select a device" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="40,12,0,0"/>
                 <ComboBox Width="200" Height="32" FontSize="16" HorizontalAlignment="Left" Margin="80,20,0,0" SelectionChanged="ComboBox_SelectionChanged">
                     <ComboBoxItem>Raspberry Pi</ComboBoxItem>
@@ -27,6 +27,16 @@
                     <ComboBoxItem IsSelected="True">64 Bit</ComboBoxItem>
                 </ComboBox>
                 <Image x:Name="imgDevice" Source="/AMaungUs.FFUMaker;component/Assets/boards/intelbsw.png" Width="320" HorizontalAlignment="Left" Margin="80,40,0,0"/>
+            </StackPanel>
+            <StackPanel x:Name="spSMBios" Visibility="Visible">
+                <TextBlock Text="System Manufacturer"  FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="20,40,0,0"/>
+                <TextBlock Text="Accolade Inc."  FontSize="32" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                <!--echo. System Manufacturer: %OEM_NAME%
+echo. System Product Name: %PRODUCT%
+echo. System SKU         : %SKU_NAME%
+echo. System Family      : %FAMILY_NAME%
+echo. Baseboard Product  : %BB_PRODNAME%--> 
+                
             </StackPanel>
         </StackPanel>
     </Grid>
