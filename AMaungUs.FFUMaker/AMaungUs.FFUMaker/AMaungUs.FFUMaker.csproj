@@ -63,6 +63,12 @@
     <Compile Include="Views\CheckListPage.xaml.cs">
       <DependentUpon>CheckListPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\DeviceInformationPage.xaml.cs">
+      <DependentUpon>DeviceInformationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DeviceSelectionPage.xaml.cs">
+      <DependentUpon>DeviceSelectionPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\LandingPage.xaml.cs">
       <DependentUpon>LandingPage.xaml</DependentUpon>
     </Compile>
@@ -82,6 +88,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\CheckListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DeviceInformationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DeviceSelectionPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -125,13 +139,30 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\windows-icon.png" />
+    <Resource Include="Assets\windows-icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Git-Icon-White.png" />
+    <Resource Include="Assets\Git-Icon-White.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\save_ico.png" />
+    <Resource Include="Assets\save_ico.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\boards\dragonboard.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\boards\intelbsw.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\boards\raspberrypi.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

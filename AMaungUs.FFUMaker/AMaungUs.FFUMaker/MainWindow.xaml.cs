@@ -28,16 +28,23 @@ namespace AMaungUs.FFUMaker
 
         private void GridCheckList_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            CheckListPage checkListPage = new CheckListPage();
+            CheckListPage pageToDisplay = new CheckListPage();
             MainDisplay.Children.Clear();
-            MainDisplay.Children.Add(checkListPage);
+            MainDisplay.Children.Add(pageToDisplay);
         }
 
         private void GridCreateWorkSpace_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            LandingPage checkListPage = new LandingPage();
+            DeviceSelectionPage pageToDisplay = new DeviceSelectionPage();
             MainDisplay.Children.Clear();
-            MainDisplay.Children.Add(checkListPage);
+            MainDisplay.Children.Add(pageToDisplay);
+        }
+
+        private void GridDeviceInformation_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            DeviceInformationPage pageToDisplay = new DeviceInformationPage();
+            MainDisplay.Children.Clear();
+            MainDisplay.Children.Add(pageToDisplay);
         }
     }
 }
