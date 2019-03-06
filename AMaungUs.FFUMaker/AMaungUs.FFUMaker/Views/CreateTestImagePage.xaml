@@ -5,8 +5,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AMaungUs.FFUMaker.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="720" d:DesignWidth="1200">
     <Grid>
-            
+        <StackPanel Margin="48">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Test Image Dashboard" x:Name="TabWorkSpace" FontSize="32" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="20,0,0,0"/>
+            </StackPanel>
+        </StackPanel>
+
     </Grid>
 </UserControl>
