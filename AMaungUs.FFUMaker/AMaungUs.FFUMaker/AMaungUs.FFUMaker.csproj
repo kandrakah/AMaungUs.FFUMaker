@@ -63,6 +63,9 @@
     <Compile Include="Views\CheckListPage.xaml.cs">
       <DependentUpon>CheckListPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\CreateTestImagePage.xaml.cs">
+      <DependentUpon>CreateTestImagePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\DeviceInformationPage.xaml.cs">
       <DependentUpon>DeviceInformationPage.xaml</DependentUpon>
     </Compile>
@@ -88,6 +91,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\CheckListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CreateTestImagePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
