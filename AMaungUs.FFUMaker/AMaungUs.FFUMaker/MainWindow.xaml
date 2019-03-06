@@ -3,10 +3,19 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:AMaungUs.FFUMaker"
         xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
+        xmlns:local="clr-namespace:AMaungUs.FFUMaker"
+        xmlns:vm="clr-namespace:AMaungUs.FFUMaker.ViewModels"
+        xmlns:this2that="clr-namespace:AMaungUs.FFUMaker.Converters"
         mc:Ignorable="d"
+        Icon="icon.ico"
         Title="AMaungUs: FFUMaker" Height="720" Width="1280">
+    <Window.DataContext>
+        <vm:MainWindowViewModel/>
+    </Window.DataContext>
+    <Window.Resources>
+        <this2that:BoolToVisibilityConverter x:Key="BoolToVisibility" />
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="48"/>
@@ -32,7 +41,7 @@
                 <TextBlock Text="" FontFamily="Segoe MDL2 Assets" TextAlignment="Center" VerticalAlignment="Center" FontSize="18" Foreground="White" Grid.Column="0" Width="32"/>
                 <TextBlock Text="Prerequisits" FontFamily="Segoe UI Light" TextAlignment="Left" Padding="12,0,12,0" VerticalAlignment="Center" FontSize="18" Foreground="White" Grid.Column="1" Visibility="Collapsed"/>
             </Grid>
-            <Grid x:Name="GridCreateWorkSpace" Width="auto" Height="36" Background="Transparent" MouseDown="GridCreateWorkSpace_MouseDown">
+            <Grid x:Name="GridCreateWorkSpace" Width="auto" Height="36" Background="Transparent" MouseDown="GridCreateWorkSpace_MouseDown" Visibility="{Binding PreReqVM.HasAllPreRequisites , Converter={StaticResource BoolToVisibility}}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="32"/>
                     <ColumnDefinition Width="*"/>

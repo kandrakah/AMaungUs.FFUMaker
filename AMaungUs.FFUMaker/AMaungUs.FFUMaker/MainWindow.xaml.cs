@@ -1,4 +1,5 @@
-﻿using AMaungUs.FFUMaker.Views;
+﻿using AMaungUs.FFUMaker.ViewModels;
+using AMaungUs.FFUMaker.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +29,7 @@ namespace AMaungUs.FFUMaker
 
         private void GridCheckList_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            CheckListPage pageToDisplay = new CheckListPage();
+            PrerequisitePage pageToDisplay = new PrerequisitePage();
             MainDisplay.Children.Clear();
             MainDisplay.Children.Add(pageToDisplay);
         }

@@ -18,9 +18,9 @@ namespace AMaungUs.FFUMaker.Views
     /// <summary>
     /// Interaction logic for CheckListPage.xaml
     /// </summary>
-    public partial class CheckListPage : UserControl
+    public partial class PrerequisitePage : UserControl
     {
-        public CheckListPage()
+        public PrerequisitePage()
         {
             InitializeComponent();
         }
