@@ -23,15 +23,22 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="48"/>
                             <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="48"/>
+                            <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
+                            <RowDefinition Height="24"/>
                             <RowDefinition Height=".5*"/>
                             <RowDefinition Height=".5*"/>
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Column="0" Grid.Row="0" Text="" FontSize="24" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
-                        <TextBlock Grid.Column="1" Grid.Row="0" Text="ARM" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
-                        <TextBlock Grid.Column="0" Grid.Row="1" Text="" FontSize="24" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
-                        <Viewbox Grid.Column="1" Grid.Row="1" Margin="12,0,12,0">
+                        <Viewbox Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Margin="12,0,12,0">
+                            <TextBlock Text="My IoT Device" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" />
+                        </Viewbox><TextBlock Grid.Column="0" Grid.Row="1" Text="" FontSize="18" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                        <TextBlock Grid.Column="1" Grid.Row="1" Text="ARM" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                        <TextBlock Grid.Column="2" Grid.Row="1" Text="" FontSize="18" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                        <TextBlock Grid.Column="3" Grid.Row="1" Text="Contoso" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                        <TextBlock Grid.Column="0" Grid.Row="2" Text="" FontSize="18" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                        <Viewbox Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="3" Margin="12,0,12,0">
                             <TextBlock Text="C:\IoT\iot-adk-addonkit\Workspace\Source-arm64" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" />
                         </Viewbox>
                     </Grid>
