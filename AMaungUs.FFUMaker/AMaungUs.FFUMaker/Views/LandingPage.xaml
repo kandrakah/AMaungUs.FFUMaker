@@ -9,7 +9,7 @@
     <Grid>
         <StackPanel Margin="40">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Image Source="/AMaungUs.FFUMaker;component/Assets/windows-icon.png" Width="240" Height="240"/>
+                <Image Source="/FFUMaker;component/Assets/windows-icon.png" Width="240" Height="240"/>
                 <TextBlock Text="IoT Core" FontSize="48" Foreground="White" FontFamily="Segoe UI Light" RenderTransformOrigin="0.5,0.5">
                     <TextBlock.RenderTransform>
                         <TransformGroup>
@@ -24,12 +24,7 @@
             <Viewbox >
                 <TextBlock Text="Welcome to Windows IoT Core FFU Creation Tool" Foreground="White" FontFamily="Segoe UI Light" />
             </Viewbox>
-            <TextBlock Text="This tool is a GUI wrapper for Paramesh Babu's iot-adk-addonkit. You can clone the addon kit from the link below." FontSize="24" TextWrapping="Wrap" Foreground="White" FontFamily="Segoe UI Light"/>
-            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
-                <Image Source="/AMaungUs.FFUMaker;component/Assets/Git-Icon-White.png" Width="64" Height="64"/>
-                <TextBlock Text="https://github.com/ms-iot/iot-adk-addonkit" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="20,0,0,0"/>
-                
-            </StackPanel>
+            
         </StackPanel>
             
     </Grid>

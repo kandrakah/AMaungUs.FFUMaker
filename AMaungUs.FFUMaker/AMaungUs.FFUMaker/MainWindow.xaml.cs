@@ -37,7 +37,7 @@ namespace AMaungUs.FFUMaker
 
         private void GridCreateWorkSpace_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            DeviceSelectionPage pageToDisplay = new DeviceSelectionPage();
+            WorkplaceSelectionPage pageToDisplay = new WorkplaceSelectionPage();
             MainDisplay.Children.Clear();
             MainDisplay.Children.Add(pageToDisplay);
         }

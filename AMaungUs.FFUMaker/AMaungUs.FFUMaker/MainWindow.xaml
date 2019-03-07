@@ -49,7 +49,7 @@
                 <TextBlock Text="" FontFamily="Segoe MDL2 Assets" TextAlignment="Center" VerticalAlignment="Center" FontSize="18" Foreground="White" Grid.Column="0" Width="32"/>
                 <TextBlock Text="Workspace Creation" FontFamily="Segoe UI Light" TextAlignment="Left" Padding="12,0,12,0" VerticalAlignment="Center" FontSize="18" Foreground="White" Grid.Column="1" Visibility="Collapsed"/>
             </Grid>
-            <Grid x:Name="GridDeviceInformation" Width="auto" Height="36" Background="Transparent" MouseDown="GridDeviceInformation_MouseDown" >
+            <Grid x:Name="GridDeviceInformation" Width="auto" Height="36" Background="Transparent" MouseDown="GridDeviceInformation_MouseDown" Visibility="Collapsed">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="32"/>
                     <ColumnDefinition Width="*"/>
@@ -57,7 +57,7 @@
                 <TextBlock Text="" FontFamily="Segoe MDL2 Assets" TextAlignment="Center" VerticalAlignment="Center" FontSize="18" Foreground="White" Grid.Column="0" Width="32"/>
                 <TextBlock Text="Device Information" FontFamily="Segoe UI Light" TextAlignment="Left" Padding="12,0,12,0" VerticalAlignment="Center" FontSize="18" Foreground="White" Grid.Column="1" Visibility="Collapsed"/>
             </Grid>
-            <Grid x:Name="GridTestImage" Width="auto" Height="36" Background="Transparent" MouseDown="GridTestImage_MouseDown" >
+            <Grid x:Name="GridTestImage" Width="auto" Height="36" Background="Transparent" MouseDown="GridTestImage_MouseDown" Visibility="Collapsed">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="32"/>
                     <ColumnDefinition Width="*"/>
@@ -65,7 +65,7 @@
                 <TextBlock Text="" FontFamily="Segoe MDL2 Assets" TextAlignment="Center" VerticalAlignment="Center" FontSize="18" Foreground="White" Grid.Column="0" Width="32"/>
                 <TextBlock Text="Hello World" FontFamily="Segoe UI Light" TextAlignment="Left" Padding="12,0,12,0" VerticalAlignment="Center" FontSize="18" Foreground="White" Grid.Column="1" Visibility="Collapsed"/>
             </Grid>
-            <Grid x:Name="GridFinalImage" Width="auto" Height="36" Background="Transparent" MouseDown="GridTestImage_MouseDown" >
+            <Grid x:Name="GridFinalImage" Width="auto" Height="36" Background="Transparent" MouseDown="GridTestImage_MouseDown" Visibility="Collapsed">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="32"/>
                     <ColumnDefinition Width="*"/>

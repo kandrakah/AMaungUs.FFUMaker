@@ -18,9 +18,9 @@ namespace AMaungUs.FFUMaker.Views
     /// <summary>
     /// Interaction logic for DeviceSelectionPage.xaml
     /// </summary>
-    public partial class DeviceSelectionPage : UserControl
+    public partial class WorkplaceSelectionPage : UserControl
     {
-        public DeviceSelectionPage()
+        public WorkplaceSelectionPage()
         {
             InitializeComponent();
         }
