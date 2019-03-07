@@ -40,8 +40,8 @@ namespace AMaungUs.FFUMaker.ViewModels
         {
             Workspaces = new ObservableCollection<Workspace>();
             Workspaces.Add(new Workspace { Architecture = "ARM", Name = "Test", OEMName = "CNCY", Path = "C:\\IoT" });
-            Workspaces.Add(new Workspace { Architecture = "x86", Name = "Test", OEMName = "CNCY", Path = "C:\\IoT" });
-            Workspaces.Add(new Workspace { Architecture = "x64", Name = "Test", OEMName = "CNCY", Path = "C:\\IoT" });
+            Workspaces.Add(new Workspace { Architecture = "x86", Name = "FFU Maker", OEMName = "CNCY", Path = "C:\\Dev\\Personal\\AMaungUs.FFUMaker\\AMaungUs.FFUMaker" });
+            Workspaces.Add(new Workspace { Architecture = "x64", Name = "Snapdragon Test", OEMName = "CNCY", Path = "C:\\IoT\\WorkSpaces\\410C" });
             Workspaces.Add(new Workspace { Architecture = "x64", Name = "Test", OEMName = "CNCY", Path = "C:\\IoT" });
             Workspaces.Add(new Workspace { Architecture = "x64", Name = "Test", OEMName = "CNCY", Path = "C:\\IoT" });
             Workspaces.Add(new Workspace { Architecture = "x64", Name = "Test", OEMName = "CNCY", Path = "C:\\IoT" });
