@@ -65,6 +65,7 @@ namespace AMaungUs.FFUMaker.ViewModels
         {
             CreateWorkspaceModal createModal = new CreateWorkspaceModal();
             Nullable<bool> dialogresult = createModal.ShowDialog();
+            var x = createModal.DataContext;
         }
         System.Windows.Input.ICommand delWorkSpaceCommand;
         public ICommand DelWorkSpaceCommand

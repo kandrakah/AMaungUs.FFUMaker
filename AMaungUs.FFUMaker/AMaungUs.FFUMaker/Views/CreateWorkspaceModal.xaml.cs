@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AMaungUs.FFUMaker.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,12 @@ namespace AMaungUs.FFUMaker.Views
         public CreateWorkspaceModal()
         {
             InitializeComponent();
+            ((CreateWorkspaceViewModel)this.DataContext).Create += CreateWorkspaceModal_Create;
+        }
+
+        private void CreateWorkspaceModal_Create(object sender, EventArgs e)
+        {
+            DialogResult = true;
         }
     }
 }

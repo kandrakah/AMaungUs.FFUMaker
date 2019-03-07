@@ -4,13 +4,38 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AMaungUs.FFUMaker.Views"
+        xmlns:vm="clr-namespace:AMaungUs.FFUMaker.ViewModels"
         mc:Ignorable="d"
-        Title="CreateWorkspaceWindow" Height="450" Width="800">
-    <StackPanel>
-        <TextBlock Text="Workspace Name"/>
-        <TextBlock Text="OEM Name"/>
-        <TextBlock Text="Architecture Drop Down"/>
-        <TextBlock Text="Path"/>
-        <TextBlock Text="OK Button"/>
-    </StackPanel>
+        Title="Create Workspace" Height="450" Width="800">
+    <Window.DataContext>
+        <vm:CreateWorkspaceViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="110"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="60"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Label Content="Workspace Name" Grid.Row="0" Grid.Column="0" HorizontalContentAlignment="Right"/>
+            <TextBox Text="{Binding WorkspaceName}" Grid.Row="0" Grid.Column="1" Margin="6"/>
+            <Label Content="OEM Name" Grid.Row="1" Grid.Column="0" HorizontalContentAlignment="Right"/>
+            <TextBox Text="{Binding OEMName}" Grid.Row="1" Grid.Column="1" Margin="6"/>
+            <Label Content="Architecture" Grid.Row="2" Grid.Column="0" HorizontalContentAlignment="Right"/>
+            <ComboBox Grid.Row="2" Grid.Column="1" SelectedValue="{Binding Architecture}" ItemsSource="{Binding ArchitectureList}" Margin="6">
+            </ComboBox>
+            <Label Content="Path" Grid.Row="3" Grid.Column="0" HorizontalContentAlignment="Right"/>
+            <Label Content="{Binding WorkspacePath}" Grid.Row="3" Grid.Column="1"/>
+            <Button Content="Browse" Command="{Binding PathSelectionCommand}" Grid.Row="3" Grid.Column="2" HorizontalContentAlignment="Center"/>
+            <Button Content="Create" Command="{Binding CreateCommand}" Grid.Row="4" Grid.ColumnSpan="3" Grid.Column="0" Margin="6"/>
+        </Grid>
+    </Grid>
 </Window>
