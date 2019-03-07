@@ -12,7 +12,7 @@ namespace AMaungUs.FFUMaker.ViewModels
     public class WorkspaceViewModel : BaseViewModel
     {
         ObservableCollection<Workspace> workspace;
-        public ObservableCollection<Workspace> WorkSpaces
+        public ObservableCollection<Workspace> Workspaces
         {
             get
             {
@@ -24,6 +24,10 @@ namespace AMaungUs.FFUMaker.ViewModels
         }
         public WorkspaceViewModel()
         {
+            Workspaces = new ObservableCollection<Workspace>();
+            Workspaces.Add(new Workspace { Architecture = "ARM", Name = "Test", OEMName = "CNCY", Path = "C:\\IoT" });
+            Workspaces.Add(new Workspace { Architecture = "x86", Name = "Test", OEMName = "CNCY", Path = "C:\\IoT" });
+            Workspaces.Add(new Workspace { Architecture = "x64", Name = "Test", OEMName = "CNCY", Path = "C:\\IoT" });
             AddWorkSpaceCommand = new DelegateCommand<object>(this.AddWorkspaceCommandExec, x => true);
             OnPropertyChanged("AddWorkSpaceCommand");
             DelWorkSpaceCommand = new DelegateCommand<object>(this.DelWorkspaceCommandExec, x => true);

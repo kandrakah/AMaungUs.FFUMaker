@@ -12,29 +12,14 @@
     </UserControl.DataContext>
     <Grid>
         <StackPanel Margin="48">
-            <StackPanel>
+            <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Workspace Location" x:Name="TabWorkSpace" FontSize="32" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="20,0,0,0"/>
-                <TextBlock Text="Select an existing workspace" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="20,20,0,0"/>
-
             </StackPanel>
             <StackPanel>
                 <WrapPanel  Height="320" Background="Red" Margin="0,20,0,0">
-                    <Grid Height="80" Width="360" Background="blue">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="48"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height=".5*"/>
-                            <RowDefinition Height=".5*"/>
-                        </Grid.RowDefinitions>
-                        <TextBlock Grid.Column="0" Grid.Row="0" Text="" FontSize="24" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
-                        <TextBlock Grid.Column="1" Grid.Row="0" Text="ARM" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
-                        <TextBlock Grid.Column="0" Grid.Row="1" Text="" FontSize="24" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
-                        <Viewbox Grid.Column="1" Grid.Row="1" Margin="12,0,12,0">
-                            <TextBlock Text="C:\IoT\iot-adk-addonkit\Workspace\Source-arm64" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" />
-                        </Viewbox>
-                    </Grid>
+                    <StackPanel Height="80" Width="360" Background="blue">
+                        
+                    </StackPanel>
                     <StackPanel Height="80" Width="360" Background="cyan">
 
                     </StackPanel>
@@ -45,11 +30,17 @@
 
                     </StackPanel>
                 </WrapPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="40,32,40,32">
-                    <TextBlock Text="" FontSize="24" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
-                    <TextBlock Text="Create a new workspace" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
-                </StackPanel>
-                <TextBlock Margin="24,0,0,0" Text="Selecting a 'New Workspace' will create a base workspace settings and storage area for a new device. You will be required to provide information regarding the device. &#10;&#13;Required information includes SMBios information for device (if needed), neccessary device drivers, and Borad Support Packages(BSPs) for the device of choice." TextWrapping="Wrap" FontSize="18" Foreground="White" FontFamily="Segoe UL Light" VerticalAlignment="Center" />
+                <Grid Height="40"  Margin="0,40,0,0">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="40,0,0,0">
+                        <TextBlock Text="" FontSize="24" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                        <TextBlock Text="Create a new workspace" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,40,0">
+                        <TextBlock Text="" FontSize="24" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                        <TextBlock Text="Select an existing workspace" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                    </StackPanel>
+                </Grid>
+                <TextBlock Margin="24,20,0,0" Text="Selecting a 'New Workspace' will create a base workspace settings and storage area for a new device. You will be required to provide information regarding the device. &#10;&#13;Required information includes SMBios information for device (if needed), neccessary device drivers, and Borad Support Packages(BSPs) for the device of choice." TextWrapping="Wrap" FontSize="18" Foreground="White" FontFamily="Segoe UL Light" VerticalAlignment="Center" />
     
             </StackPanel>
             
