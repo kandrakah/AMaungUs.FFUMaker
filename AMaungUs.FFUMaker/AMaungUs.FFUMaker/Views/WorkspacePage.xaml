@@ -12,32 +12,60 @@
     </UserControl.DataContext>
     <Grid>
         <StackPanel Margin="48">
-            <StackPanel Orientation="Horizontal">
+            <StackPanel>
                 <TextBlock Text="Workspace Location" x:Name="TabWorkSpace" FontSize="32" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                <TextBlock Text="Select an existing workspace" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="22,0,0,0"/>
             </StackPanel>
             <StackPanel>
-                <WrapPanel  Height="320" Background="Red" Margin="0,20,0,0">
-                    <StackPanel Height="80" Width="360" Background="blue">
-                        
-                    </StackPanel>
-                    <StackPanel Height="80" Width="360" Background="cyan">
-
-                    </StackPanel>
-                    <StackPanel Height="80" Width="360" Background="orange">
-
-                    </StackPanel>
-                    <StackPanel Height="80" Width="360" Background="green">
-
-                    </StackPanel>
-                </WrapPanel>
+                <ItemsControl x:Name="WrapPanelControl" ItemsSource="{Binding Workspaces}" Height="320" Margin="0,20,0,0">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Height="80" Width="360" Background="#222" Margin="4">
+                                <Grid.InputBindings>
+                                    <MouseBinding Command="{Binding ElementName=WrapPanelControl, Path=DataContext.SelectCommand}" CommandParameter="{Binding .}" MouseAction="LeftClick" />
+                                </Grid.InputBindings>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="48"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="48"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="24"/>
+                                    <RowDefinition Height=".5*"/>
+                                    <RowDefinition Height=".5*"/>
+                                </Grid.RowDefinitions>
+                                <Viewbox Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Margin="12,0,12,0">
+                                    <TextBlock Text="{Binding Name}" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" />
+                                </Viewbox>
+                                <TextBlock Grid.Column="0" Grid.Row="1" Text="" FontSize="18" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                                <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding Architecture}" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                                <TextBlock Grid.Column="2" Grid.Row="1" Text="" FontSize="18" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                                <TextBlock Grid.Column="3" Grid.Row="1" Text="{Binding OEMName}" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                                <TextBlock Grid.Column="0" Grid.Row="2" Text="" FontSize="18" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                                <Viewbox Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="3" Margin="12,0,12,0">
+                                    <TextBlock Text="{Binding Path}" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" />
+                                </Viewbox>
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel HorizontalAlignment="Center" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
                 <Grid Height="40"  Margin="0,40,0,0">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="40,0,0,0">
                         <TextBlock Text="" FontSize="24" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
                         <TextBlock Text="Create a new workspace" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                        <StackPanel.InputBindings>
+                            <MouseBinding Command="{Binding CreateWorkspaceCommand}" MouseAction="LeftClick" />
+                        </StackPanel.InputBindings>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,40,0">
                         <TextBlock Text="" FontSize="24" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
-                        <TextBlock Text="Select an existing workspace" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                        <TextBlock Text="{Binding SelectedWorkspace.Name}" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
                     </StackPanel>
                 </Grid>
                 <TextBlock Margin="24,20,0,0" Text="Selecting a 'New Workspace' will create a base workspace settings and storage area for a new device. You will be required to provide information regarding the device. &#10;&#13;Required information includes SMBios information for device (if needed), neccessary device drivers, and Borad Support Packages(BSPs) for the device of choice." TextWrapping="Wrap" FontSize="18" Foreground="White" FontFamily="Segoe UL Light" VerticalAlignment="Center" />
