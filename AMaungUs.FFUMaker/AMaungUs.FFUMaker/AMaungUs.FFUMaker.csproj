@@ -72,6 +72,7 @@
     <Compile Include="ViewModels\DelegateCommand.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\PrerequisiteViewModel.cs" />
+    <Compile Include="ViewModels\WorkspaceViewModel.cs" />
     <Compile Include="Views\PrerequisitePage.xaml.cs">
       <DependentUpon>PrerequisitePage.xaml</DependentUpon>
     </Compile>
