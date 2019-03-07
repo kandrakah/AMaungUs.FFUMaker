@@ -16,7 +16,7 @@ namespace AMaungUs.FFUMaker.ViewModels
         {
             get
             {
-                return workspace == null ? new Workspace() : workspace;
+                return workspace == null ? new ObservableCollection<Workspace>() : workspace;
             }
             set {
                 SetProperty(ref workspace, value);
