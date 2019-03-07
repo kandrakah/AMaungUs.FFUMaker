@@ -27,9 +27,10 @@ namespace AMaungUs.FFUMaker
             InitializeComponent();
         }
 
-        private void GridCheckList_MouseDown(object sender, MouseButtonEventArgs e)
+        private void GridPrerequesite_MouseDown(object sender, MouseButtonEventArgs e)
         {
             PrerequisitePage pageToDisplay = new PrerequisitePage();
+            pageToDisplay.DataContext = ((MainWindowViewModel)this.DataContext).PreReqVM;
             MainDisplay.Children.Clear();
             MainDisplay.Children.Add(pageToDisplay);
         }

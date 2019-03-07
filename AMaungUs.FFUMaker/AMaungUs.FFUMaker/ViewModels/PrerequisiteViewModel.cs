@@ -7,12 +7,19 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
 
 namespace AMaungUs.FFUMaker.ViewModels
 {
     public class PrerequisiteViewModel : BaseViewModel
     {
         PrereqDefinition prereqDefinition;
+        public PrereqDefinition PrereqDefinition
+        {
+            get { return prereqDefinition==null?new PrereqDefinition(): prereqDefinition; }
+            set { SetProperty(ref prereqDefinition, value); }
+        }
         bool hasallprerequisites = false;
         public bool HasAllPreRequisites
         {
@@ -73,12 +80,25 @@ namespace AMaungUs.FFUMaker.ViewModels
             get { return hasX64Packages; }
             set { SetProperty(ref hasX64Packages, value); }
         }
+        string adkAddOnKitPath;
+        public string AdkAddOnKitPath
+        {
+            get { return adkAddOnKitPath; }
+            set { SetProperty(ref adkAddOnKitPath, value); }
+        }
         public PrerequisiteViewModel()
         {
             LoadJson();
+            GetAdkAddOnKitPath();
             ValidatePreRequisites();
+            DownloadCommand = new DelegateCommand<object>(this.DownloadCommandExecution, x => true);
+            OnPropertyChanged("DownloadCommand");
+            SetADKAddOnKitLocCmd = new DelegateCommand<object>(this.SetADKAddOnKitLocExec, x => true);
+            OnPropertyChanged("SetADKAddOnKitLocCmd");
+            ValidateCommand = new DelegateCommand<object>(this.ValidateCommandExecution, x => true);
+            OnPropertyChanged("ValidateCommand");
         }
-        public void LoadJson()
+        private void LoadJson()
         {
             var path = System.AppDomain.CurrentDomain.BaseDirectory;
             using (StreamReader r = new StreamReader(path + "/Assets/PrerequisiteLinks.json"))
@@ -87,23 +107,23 @@ namespace AMaungUs.FFUMaker.ViewModels
                 prereqDefinition = JsonConvert.DeserializeObject<PrereqDefinition>(json);
             }
         }
-        public void ValidatePreRequisites()
+        private void ValidatePreRequisites()
         {
             ValidateWindowsADK();
             ValidateWindowsPE();
             ValidateIoTADKAddonKit();
             ValidateWindowsDriverKit();
             ValidateWindowsIoTCorePackages();
-            if(HasWindowsADK && hasWindowsPE && HasWindowsIoTCorePackages)
+            if(HasWindowsADK && HasWindowsPE && HasWindowsIoTCorePackages && HasIoTADKAddOnKit)
             {
                 HasAllPreRequisites = true;
             }
         }
-        public void ValidateWindowsADK()
+        private void ValidateWindowsADK()
         {
             HasWindowsADK = RegKeyExists(prereqDefinition.WindowsADK.RegistryLocation[0]);
         }
-        public void ValidateWindowsPE()
+        private void ValidateWindowsPE()
         {
             bool hasKey = false;
             foreach (var key in prereqDefinition.WindowsPE.RegistryLocation)
@@ -114,13 +134,14 @@ namespace AMaungUs.FFUMaker.ViewModels
             }
             HasWindowsPE = hasKey;
         }
-        public void ValidateIoTADKAddonKit()
+        private void ValidateIoTADKAddonKit()
+        {
+            HasIoTADKAddOnKit = File.Exists(AdkAddOnKitPath + "\\" + prereqDefinition.IoTADKAddonKit.VerificationLocation);
+        }
+        private void ValidateWindowsDriverKit()
         {
         }
-        public void ValidateWindowsDriverKit()
-        {
-        }
-        public void ValidateWindowsIoTCorePackages()
+        private void ValidateWindowsIoTCorePackages()
         {
             foreach (var key in prereqDefinition.WindowsIoTCorePackages.RegistryLocation)
             {
@@ -158,6 +179,71 @@ namespace AMaungUs.FFUMaker.ViewModels
             key.Close();
             return keyFound;
 
+        }
+        private void GetAdkAddOnKitPath()
+        {
+            var value = Properties.Settings.Default.IoTADKAddonKitLocation;
+            if (string.IsNullOrEmpty(value))
+                AdkAddOnKitPath = "Path not set.";
+            else
+                AdkAddOnKitPath = value;
+        }
+        System.Windows.Input.ICommand downloadCommand;
+        public ICommand DownloadCommand
+        {
+            get; set;
+        }
+        private void DownloadCommandExecution(object parm)
+        {
+            if (parm is string)
+            {
+                System.Diagnostics.Process.Start((string)parm);
+            }
+        }
+        System.Windows.Input.ICommand setADKAddOnKitLocCmd;
+        public ICommand SetADKAddOnKitLocCmd
+        {
+            get; set;
+        }
+        private void SetADKAddOnKitLocExec(object parm)
+        {
+            var folderDialog = new System.Windows.Forms.FolderBrowserDialog();
+            if(AdkAddOnKitPath != "Path not set.")
+            {
+                folderDialog.SelectedPath = AdkAddOnKitPath;
+            }
+            var result = folderDialog.ShowDialog();
+            switch (result)
+            {
+                case System.Windows.Forms.DialogResult.OK:
+                    var folder = folderDialog.SelectedPath;
+                    AdkAddOnKitPath = folder;
+                    ValidateIoTADKAddonKit();
+                    if (!HasIoTADKAddOnKit)
+                    {
+                        MessageBox.Show("IoT-ADK-AddOnKit not found at the selected path.\n\n" + folder);
+                        AdkAddOnKitPath = "Path not set.";
+                    }
+                    else
+                    {
+                        Properties.Settings.Default.IoTADKAddonKitLocation = folder;
+                        Properties.Settings.Default.Save();
+                    }
+                    ValidatePreRequisites();
+                    break;
+                case System.Windows.Forms.DialogResult.Cancel:
+                default:
+                    break;
+            }
+        }
+        System.Windows.Input.ICommand validateCommand;
+        public ICommand ValidateCommand
+        {
+            get; set;
+        }
+        private void ValidateCommandExecution(object parm)
+        {
+            ValidatePreRequisites();
         }
     }
 }

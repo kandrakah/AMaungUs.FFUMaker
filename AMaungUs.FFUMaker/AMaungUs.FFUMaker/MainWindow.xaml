@@ -33,13 +33,13 @@
                 <TextBlock Text="" FontFamily="Segoe MDL2 Assets" TextAlignment="Center" VerticalAlignment="Center" FontSize="18" Foreground="White" Grid.Column="0" Width="32"/>
                 <TextBlock Text="Hello World" FontFamily="Segoe UI Light" TextAlignment="Left" Padding="12,0,12,0" VerticalAlignment="Center" FontSize="18" Foreground="White" Grid.Column="1" Visibility="Collapsed"/>
             </Grid>
-            <Grid x:Name="GridCheckList" Width="auto" Height="36" Background="Transparent" MouseDown="GridCheckList_MouseDown">
+            <Grid x:Name="GridPrerequesite" Width="auto" Height="36" Background="Transparent" MouseDown="GridPrerequesite_MouseDown">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="32"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="" FontFamily="Segoe MDL2 Assets" TextAlignment="Center" VerticalAlignment="Center" FontSize="18" Foreground="White" Grid.Column="0" Width="32"/>
-                <TextBlock Text="Prerequisits" FontFamily="Segoe UI Light" TextAlignment="Left" Padding="12,0,12,0" VerticalAlignment="Center" FontSize="18" Foreground="White" Grid.Column="1" Visibility="Collapsed"/>
+                <TextBlock Text="Prerequisites" FontFamily="Segoe UI Light" TextAlignment="Left" Padding="12,0,12,0" VerticalAlignment="Center" FontSize="18" Foreground="White" Grid.Column="1" Visibility="Collapsed"/>
             </Grid>
             <Grid x:Name="GridCreateWorkSpace" Width="auto" Height="36" Background="Transparent" MouseDown="GridCreateWorkSpace_MouseDown" Visibility="{Binding PreReqVM.HasAllPreRequisites , Converter={StaticResource BoolToVisibility}}">
                 <Grid.ColumnDefinitions>

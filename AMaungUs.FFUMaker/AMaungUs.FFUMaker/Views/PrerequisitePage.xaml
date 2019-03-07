@@ -4,79 +4,119 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AMaungUs.FFUMaker.Views"
+             xmlns:this2that="clr-namespace:AMaungUs.FFUMaker.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="720" d:DesignWidth="1200">
+    <UserControl.Resources>
+        <this2that:BoolToVisibilityConverter x:Key="BoolToVisibility" />
+    </UserControl.Resources>
     <Grid>
 
         <StackPanel Margin="48">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Prerequisite Package Check" x:Name="TabWorkSpace" FontSize="32" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="20,0,0,0"/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
-                <TextBlock Text="" FontSize="18" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
-                <TextBlock Text="Windows Assessment and Deployment Kit (Windows ADK)" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="20,0,0,0"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal"  HorizontalAlignment="Left" Margin="36,0,0,0">
-                <StackPanel Orientation="Horizontal">
+            <StackPanel Margin="20,20,0,0">
+                <CheckBox VerticalContentAlignment="Center" IsChecked="{Binding HasWindowsADK }" IsEnabled="False">
+                    <CheckBox.LayoutTransform>
+                        <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+                    </CheckBox.LayoutTransform>
+                    <TextBlock Text="{Binding PrereqDefinition.WindowsADK.DisplayName}" FontSize="16" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="0,0,0,0"/>
+                </CheckBox>
+                <StackPanel Orientation="Horizontal" Margin="20,8,0,0">
                     <TextBlock Text="" FontSize="18" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
                     <TextBlock Text="Download" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                    <StackPanel.InputBindings>
+                        <MouseBinding Command="{Binding DownloadCommand}" CommandParameter="{Binding PrereqDefinition.WindowsADK.DownloadLink}" MouseAction="LeftClick" />
+                    </StackPanel.InputBindings>
                 </StackPanel>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
-                <TextBlock Text="" FontSize="18" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
-                <TextBlock Text="Windows PE and add-on for ADK" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="20,0,0,0"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal"  HorizontalAlignment="Left" Margin="36,0,0,0">
-                <StackPanel Orientation="Horizontal">
+            <StackPanel Margin="20,20,0,0">
+                <CheckBox VerticalContentAlignment="Center" IsChecked="{Binding HasWindowsPE }" IsEnabled="False">
+                    <CheckBox.LayoutTransform>
+                        <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+                    </CheckBox.LayoutTransform>
+                    <TextBlock Text="{Binding PrereqDefinition.WindowsPE.DisplayName}" FontSize="16" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="0,0,0,0"/>
+                </CheckBox>
+                <StackPanel Orientation="Horizontal" Margin="20,8,0,0">
                     <TextBlock Text="" FontSize="18" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
                     <TextBlock Text="Download" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                    <StackPanel.InputBindings>
+                        <MouseBinding Command="{Binding DownloadCommand}" CommandParameter="{Binding PrereqDefinition.WindowsPE.DownloadLink}" MouseAction="LeftClick" />
+                    </StackPanel.InputBindings>
                 </StackPanel>
             </StackPanel>
-            <TextBlock Margin="48,0,0,0" Text="" FontSize="12" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" />
+            <StackPanel Margin="20,20,0,0">
+                <CheckBox VerticalContentAlignment="Center" IsChecked="{Binding HasWindowsIoTCorePackages }" IsEnabled="False">
+                    <CheckBox.LayoutTransform>
+                        <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+                    </CheckBox.LayoutTransform>
+                    <TextBlock Text="{Binding PrereqDefinition.WindowsIoTCorePackages.DisplayName}" FontSize="16" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="0,0,0,0"/>
+                </CheckBox>
+                <StackPanel Orientation="Horizontal" Margin="32,8,0,0">
+                    <CheckBox IsChecked="{Binding HasArmPackages}" Content="Arm Packages" Foreground="White"/>
+                    <CheckBox IsChecked="{Binding HasArm64Packages}" Content="Arm 64 Packages" Foreground="White" Margin="8,0,0,0"/>
+                    <CheckBox IsChecked="{Binding HasX86Packages}" Content="Intel x86 Packages" Foreground="White" Margin="8,0,0,0"/>
+                    <CheckBox IsChecked="{Binding HasX64Packages}" Content="Intel x64 Packages" Foreground="White" Margin="8,0,0,0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="20,8,0,0">
+                    <TextBlock Text="" FontSize="18" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                    <TextBlock Text="Download" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                    <StackPanel.InputBindings>
+                        <MouseBinding Command="{Binding DownloadCommand}" CommandParameter="{Binding PrereqDefinition.WindowsIoTCorePackages.DownloadLink}" MouseAction="LeftClick" />
+                    </StackPanel.InputBindings>
+                </StackPanel>
+            </StackPanel>
 
-            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
-                <TextBlock Text="" FontSize="18" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
-                <TextBlock Text="Windows IoT Core Packages" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="20,0,0,0"/>
+            <StackPanel Margin="20,20,0,0">
+                <CheckBox VerticalContentAlignment="Center" IsChecked="{Binding HasIoTADKAddOnKit }" IsEnabled="False">
+                    <CheckBox.LayoutTransform>
+                        <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+                    </CheckBox.LayoutTransform>
+                    <TextBlock Text="{Binding PrereqDefinition.IoTADKAddonKit.DisplayName}" FontSize="16" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="0,0,0,0"/>
+                </CheckBox>
             </StackPanel>
-            <StackPanel Orientation="Horizontal"  HorizontalAlignment="Left" Margin="36,0,0,0">
-                <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" Margin="20,0,0,0">
+
+                <StackPanel Orientation="Horizontal" Margin="20,8,0,0">
                     <TextBlock Text="" FontSize="18" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
                     <TextBlock Text="Download" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                    <StackPanel.InputBindings>
+                        <MouseBinding Command="{Binding DownloadCommand}" CommandParameter="{Binding PrereqDefinition.IoTADKAddonKit.DownloadLink}" MouseAction="LeftClick" />
+                    </StackPanel.InputBindings>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="52,0,0,0">
+
                     <TextBlock Text="" FontSize="18" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
-                    <TextBlock Text="Location on this system" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                    <TextBlock Text="Set Add On Kit Path" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                    <TextBlock Text="{Binding AdkAddOnKitPath}" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                    <StackPanel.InputBindings>
+                        <MouseBinding Command="{Binding SetADKAddOnKitLocCmd}" MouseAction="LeftClick" />
+                    </StackPanel.InputBindings>
                 </StackPanel>
             </StackPanel>
-            <TextBlock Margin="48,0,0,0" Text="" FontSize="12" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" />
-
-
-            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
-                <TextBlock Text="" FontSize="18" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
-                <TextBlock Text="IoT Core ADK Add-on" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="20,0,0,0"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal"  HorizontalAlignment="Left" Margin="36,0,0,0">
-                <StackPanel Orientation="Horizontal">
+            <StackPanel Margin="20,20,0,0">
+                <CheckBox VerticalContentAlignment="Center" IsChecked="{Binding HasWindowsDriverKit }" IsEnabled="False">
+                    <CheckBox.LayoutTransform>
+                        <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+                    </CheckBox.LayoutTransform>
+                    <TextBlock Text="{Binding PrereqDefinition.WindowsDriverKit.DisplayName}" FontSize="16" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="0,0,0,0"/>
+                </CheckBox>
+                <StackPanel Orientation="Horizontal" Margin="20,8,0,0">
                     <TextBlock Text="" FontSize="18" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
                     <TextBlock Text="Download" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                    <StackPanel.InputBindings>
+                        <MouseBinding Command="{Binding DownloadCommand}" CommandParameter="{Binding PrereqDefinition.WindowsDriverKit.DownloadLink}" MouseAction="LeftClick" />
+                    </StackPanel.InputBindings>
                 </StackPanel>
             </StackPanel>
-            <TextBlock Margin="48,0,0,0" Text="" FontSize="12" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" />
-
-
-            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
-                <TextBlock Text="" FontSize="18" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
-                <TextBlock Text="Windows Driver Kit (Windows WDK)" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="20,0,0,0"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal"  HorizontalAlignment="Left" Margin="36,0,0,0">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="" FontSize="18" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
-                    <TextBlock Text="Download" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
-                </StackPanel>
-            </StackPanel>
-            <TextBlock Margin="48,0,0,0" Text="" FontSize="12" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" />
-
         </StackPanel>
-
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="20">
+            <TextBlock Text="" FontSize="18" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
+            <TextBlock Text="Validate Prerequisites" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
+            <StackPanel.InputBindings>
+                <MouseBinding Command="{Binding ValidateCommand}" MouseAction="LeftClick" />
+            </StackPanel.InputBindings>
+        </StackPanel>
     </Grid>
 </UserControl>

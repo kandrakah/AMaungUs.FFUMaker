@@ -6,7 +6,7 @@
     "RegistryLocation": ["HKEY_CLASSES_ROOT\\Installer\\Dependencies\\Microsoft.Windows.WindowsDeploymentTools.x86.10"]
   },
   "WindowsPE": {
-    "DisplayName": "Windows Assessment and Deployment Kit (Windows ADK)",
+    "DisplayName": "Windows PE and add-on for ADK",
     "DownloadLink": "https://go.microsoft.com/fwlink/?linkid=2022233",
     "Optional": "False",
     "RegistryLocation": [
@@ -15,10 +15,10 @@
     ]
   },
   "IoTADKAddonKit": {
-    "DisplayName": "IoTADKAddonKit",
+    "DisplayName": "IoT-ADK-AddOnKit",
     "DownloadLink": "https://github.com/ms-iot/iot-adk-addonkit/archive/master.zip",
     "Optional": "",
-    "VerificationLocation": "/Tools/flashSD_FFU.cmd"
+    "VerificationLocation": "IoTCorePShell.cmd"
   },
   "WindowsDriverKit": {
     "DisplayName": "Windows Driver Kit (WDK) 10",
@@ -26,7 +26,7 @@
     "Optional": "True"
   },
   "WindowsIoTCorePackages": {
-    "DisplayName": "Windows Driver Kit (WDK) 10",
+    "DisplayName": "Windows 10 IoT Core Packages",
     "DownloadLink": "https://www.microsoft.com/en-us/software-download/windows10iotcore",
     "Optional": "False",
     "RegistryLocation": [
