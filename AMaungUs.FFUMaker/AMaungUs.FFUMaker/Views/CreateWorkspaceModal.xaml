@@ -7,44 +7,12 @@
         xmlns:local="clr-namespace:AMaungUs.FFUMaker.Views"
         xmlns:vm="clr-namespace:AMaungUs.FFUMaker.ViewModels"
         mc:Ignorable="d"
-<<<<<<< HEAD
-        Title="Create Workspace" Height="450" Width="800">
+        Background="Black"
+        Title="AMaungUs: FFUMaker - Create a new workspace" Height="360" Width="480">
     <Window.DataContext>
         <vm:CreateWorkspaceViewModel/>
     </Window.DataContext>
-    <Grid>
-        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="110"/>
-                <ColumnDefinition Width="200"/>
-                <ColumnDefinition Width="60"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-
-            <Label Content="Workspace Name" Grid.Row="0" Grid.Column="0" HorizontalContentAlignment="Right"/>
-            <TextBox Text="{Binding WorkspaceName}" Grid.Row="0" Grid.Column="1" Margin="6"/>
-            <Label Content="OEM Name" Grid.Row="1" Grid.Column="0" HorizontalContentAlignment="Right"/>
-            <TextBox Text="{Binding OEMName}" Grid.Row="1" Grid.Column="1" Margin="6"/>
-            <Label Content="Architecture" Grid.Row="2" Grid.Column="0" HorizontalContentAlignment="Right"/>
-            <ComboBox Grid.Row="2" Grid.Column="1" SelectedValue="{Binding Architecture}" ItemsSource="{Binding ArchitectureList}" Margin="6">
-            </ComboBox>
-            <Label Content="Path" Grid.Row="3" Grid.Column="0" HorizontalContentAlignment="Right"/>
-            <Label Content="{Binding WorkspacePath}" Grid.Row="3" Grid.Column="1"/>
-            <Button Content="Browse" Command="{Binding PathSelectionCommand}" Grid.Row="3" Grid.Column="2" HorizontalContentAlignment="Center"/>
-            <Button Content="Create" Command="{Binding CreateCommand}" Grid.Row="4" Grid.ColumnSpan="3" Grid.Column="0" Margin="6"/>
-        </Grid>
-    </Grid>
-</Window>
-=======
-        Background="Black"
-        Title="AMaungUs: FFUMaker - Create a new workspace" Height="360" Width="480">
-        <Window.Resources>
+    <Window.Resources>
         <Style x:Key="placeHolder" TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
             <Setter Property="Template">
                 <Setter.Value>
@@ -79,32 +47,35 @@
     <StackPanel Margin="24">
         <TextBlock Text="Create a new workspace" x:Name="TabWorkSpace" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" />
         <TextBlock Text="Workspace Name" Foreground="White" FontFamily="Segoe UI Light" Margin="0,8,0,0"/>
-        <TextBox Style="{StaticResource placeHolder}" Tag="Workspace Name" Text="" Height="24"/>
+        <TextBox Style="{StaticResource placeHolder}" Tag="Workspace Name" Text="{Binding WorkspaceName}" Height="24"/>
         <TextBlock Text="OEM Name" Foreground="White" FontFamily="Segoe UI Light"  Margin="0,8,0,0"/>
-        <TextBox Style="{StaticResource placeHolder}" Tag="OEM Name" Text="" Height="24"/>
+        <TextBox Style="{StaticResource placeHolder}" Tag="OEM Name" Height="24" Text="{Binding OEMName}"/>
         <TextBlock Text="Architecture" Foreground="White" FontFamily="Segoe UI Light"  Margin="0,8,0,0"/>
-        <ComboBox Width="200" Height="24" FontSize="14" HorizontalAlignment="Left"  SelectionChanged="ComboBox_SelectionChanged">
-            <ComboBoxItem>Arm</ComboBoxItem>
-            <ComboBoxItem IsSelected="True">Arm64</ComboBoxItem>
-            <ComboBoxItem>x86</ComboBoxItem>
-            <ComboBoxItem>x64</ComboBoxItem>
+        <ComboBox Width="200" Height="24" FontSize="14" HorizontalAlignment="Left" SelectedValue="{Binding Architecture}" ItemsSource="{Binding ArchitectureList}">
         </ComboBox>
         <TextBlock Text="Path" Foreground="White" FontFamily="Segoe UI Light"  Margin="0,8,0,0"/>
-        <TextBox Style="{StaticResource placeHolder}" Tag="Location Path" Text="" Height="24"/>
+        <TextBox Style="{StaticResource placeHolder}" Tag="Location Path" Text="{Binding WorkspacePath}" Height="24"/>
+        <Rectangle Fill="Transparent" Height="23" Margin="0,-23,0,0">
+            <Rectangle.InputBindings>
+                <MouseBinding Command="{Binding PathSelectionCommand}" MouseAction="LeftClick" />
+            </Rectangle.InputBindings>
+        </Rectangle>
         <Grid>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,20,0,0">
+            <!--<StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,20,0,0">
                 <TextBlock Text="" FontSize="24" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
                 <TextBlock Text="Cancel" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
-            </StackPanel>
+            </StackPanel>-->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">
                 <TextBlock Text="" FontSize="24" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
                 <TextBlock Text="Create Workspace" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                <StackPanel.InputBindings>
+                    <MouseBinding Command="{Binding CreateCommand}" MouseAction="LeftClick" />
+                </StackPanel.InputBindings>
             </StackPanel>
         </Grid>
-        
+
     </StackPanel>
 
 
 
 </fw:AcrylicWindow>
->>>>>>> 7207093fed7c459408468a755c5edae7bf1edc74
