@@ -34,5 +34,17 @@ namespace AMaungUs.FFUMaker.Properties {
                 this["IoTADKAddonKitLocation"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Workspaces {
+            get {
+                return ((string)(this["Workspaces"]));
+            }
+            set {
+                this["Workspaces"] = value;
+            }
+        }
     }
 }

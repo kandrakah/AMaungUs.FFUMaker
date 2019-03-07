@@ -84,8 +84,8 @@
     <Compile Include="Views\DeviceInformationPage.xaml.cs">
       <DependentUpon>DeviceInformationPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\WorkplaceSelectionPage.xaml.cs">
-      <DependentUpon>WorkplaceSelectionPage.xaml</DependentUpon>
+    <Compile Include="Views\WorkspacePage.xaml.cs">
+      <DependentUpon>WorkspacePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\LandingPage.xaml.cs">
       <DependentUpon>LandingPage.xaml</DependentUpon>
@@ -121,7 +121,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\WorkplaceSelectionPage.xaml">
+    <Page Include="Views\WorkspacePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
