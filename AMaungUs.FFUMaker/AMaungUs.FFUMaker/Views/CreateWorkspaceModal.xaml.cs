@@ -17,7 +17,7 @@ namespace AMaungUs.FFUMaker.Views
     /// <summary>
     /// Interaction logic for CreateWorkspaceWindow.xaml
     /// </summary>
-    public partial class CreateWorkspaceModal : Window
+    public partial class CreateWorkspaceModal
     {
         public CreateWorkspaceModal()
         {
