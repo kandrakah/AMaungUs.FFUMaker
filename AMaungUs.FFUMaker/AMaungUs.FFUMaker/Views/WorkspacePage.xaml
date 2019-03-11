@@ -29,6 +29,7 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="48"/>
                                     <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="48"/>
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="24"/>
@@ -46,12 +47,17 @@
                                 <Viewbox Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="3" Margin="12,4,12,4" HorizontalAlignment="Left">
                                     <TextBlock Text="{Binding Path}" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" />
                                 </Viewbox>
+                                <TextBlock Grid.Column="4" Grid.Row="0" Grid.RowSpan="3" Text="" FontSize="18" Foreground="White" Background="Transparent" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,4,4,4">
+                                    <TextBlock.InputBindings>
+                                        <MouseBinding Command="{Binding ElementName=WrapPanelControl, Path=DataContext.DelWorkSpaceCommand}" CommandParameter="{Binding .}" MouseAction="LeftClick" />
+                                    </TextBlock.InputBindings>
+                                </TextBlock>
                             </Grid>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <WrapPanel HorizontalAlignment="Center" />
+                            <WrapPanel HorizontalAlignment="Left" />
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
                 </ItemsControl>
