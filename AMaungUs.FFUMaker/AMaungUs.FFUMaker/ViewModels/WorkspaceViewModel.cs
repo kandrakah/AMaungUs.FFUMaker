@@ -42,16 +42,16 @@ namespace AMaungUs.FFUMaker.ViewModels
         {
             
             var savedjson = Properties.Settings.Default.Workspaces;
-            var _workspaces = JsonConvert.DeserializeObject<List<Workspace>>(savedjson);
-            Workspaces = new ObservableCollection<Workspace>();
-            Workspaces.Add(new Workspace { Architecture = "ARM", Name = "Test", OEMName = "CNCY", Path = "C:\\IoT" });
-            Workspaces.Add(new Workspace { Architecture = "x86", Name = "FFU Maker", OEMName = "CNCY", Path = "C:\\IoT\\Workspace\\Cncy\\Pi" });
-            Workspaces.Add(new Workspace { Architecture = "x64", Name = "Snapdragon Test", OEMName = "CNCY", Path = "C:\\IoT\\WorkSpaces\\410C" });
-            Workspaces.Add(new Workspace { Architecture = "x64", Name = "Test", OEMName = "CNCY", Path = "C:\\IoT1" });
-            Workspaces.Add(new Workspace { Architecture = "x64", Name = "Test", OEMName = "CNCY", Path = "C:\\IoT2" });
-            Workspaces.Add(new Workspace { Architecture = "x64", Name = "Test", OEMName = "CNCY", Path = "C:\\IoT3" });
-            Workspaces.Add(new Workspace { Architecture = "x64", Name = "Test", OEMName = "CNCY", Path = "C:\\IoT4" });
-            Workspaces.Add(new Workspace { Architecture = "x64", Name = "Test", OEMName = "CNCY", Path = "C:\\IoT5" });
+            var _workspaces = JsonConvert.DeserializeObject<ObservableCollection<Workspace>>(savedjson);
+            Workspaces = _workspaces;
+            //Workspaces.Add(new Workspace { Architecture = "ARM", Name = "Test", OEMName = "CNCY", Path = "C:\\IoT" });
+            //Workspaces.Add(new Workspace { Architecture = "x86", Name = "FFU Maker", OEMName = "CNCY", Path = "C:\\IoT\\Workspace\\Cncy\\Pi" });
+            //Workspaces.Add(new Workspace { Architecture = "x64", Name = "Snapdragon Test", OEMName = "CNCY", Path = "C:\\IoT\\WorkSpaces\\410C" });
+            //Workspaces.Add(new Workspace { Architecture = "x64", Name = "Test", OEMName = "CNCY", Path = "C:\\IoT1" });
+            //Workspaces.Add(new Workspace { Architecture = "x64", Name = "Test", OEMName = "CNCY", Path = "C:\\IoT2" });
+            //Workspaces.Add(new Workspace { Architecture = "x64", Name = "Test", OEMName = "CNCY", Path = "C:\\IoT3" });
+            //Workspaces.Add(new Workspace { Architecture = "x64", Name = "Test", OEMName = "CNCY", Path = "C:\\IoT4" });
+            //Workspaces.Add(new Workspace { Architecture = "x64", Name = "Test", OEMName = "CNCY", Path = "C:\\IoT5" });
             CreateWorkspaceCommand = new DelegateCommand<object>(this.CreateWorkspaceCmdExec, x => true);
             OnPropertyChanged("CreateWorkspaceCommand");
             DelWorkSpaceCommand = new DelegateCommand<object>(this.DelWorkspaceCommandExec, x => true);
@@ -86,7 +86,12 @@ namespace AMaungUs.FFUMaker.ViewModels
         {
             CreateWorkspaceModal createModal = new CreateWorkspaceModal();
             Nullable<bool> dialogresult = createModal.ShowDialog();
-            var x = createModal.DataContext;
+            if (dialogresult.Value==true)
+            {
+                var workspace = ((CreateWorkspaceViewModel)createModal.DataContext).workspace;
+                Workspaces.Add(workspace);
+                SaveWorkspaces();
+            }
         }
         System.Windows.Input.ICommand delWorkSpaceCommand;
         public ICommand DelWorkSpaceCommand
@@ -103,7 +108,7 @@ namespace AMaungUs.FFUMaker.ViewModels
         }
         public bool DeleteNonExistWorkspace(Workspace workspace)
         {
-            if (!Directory.Exists(workspace.Path))
+            if (!Directory.Exists(workspace.Path+"\\"+workspace.Name))
                 return true;
             else
                 return false;
