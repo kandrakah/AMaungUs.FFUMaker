@@ -18,9 +18,9 @@ namespace AMaungUs.FFUMaker.Views
     /// <summary>
     /// Interaction logic for ImportBSPModel.xaml
     /// </summary>
-    public partial class ImportBSPModel
+    public partial class ImportBSPModal
     {
-        public ImportBSPModel()
+        public ImportBSPModal()
         {
             InitializeComponent();
         }

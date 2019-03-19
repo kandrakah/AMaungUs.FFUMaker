@@ -29,7 +29,6 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="48"/>
                                     <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="48"/>
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="24"/>
@@ -37,21 +36,16 @@
                                     <RowDefinition Height=".5*"/>
                                 </Grid.RowDefinitions>
                                 <Viewbox Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Margin="12,0,12,0">
-                                    <TextBlock Text="{Binding Name}" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" />
+                                    <TextBlock Text="{Binding BoardName}" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" />
                                 </Viewbox>
                                 <TextBlock Grid.Column="0" Grid.Row="1" Text="" FontSize="18" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,4,4,4"/>
                                 <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding Architecture}" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,4,4,4"/>
                                 <TextBlock Grid.Column="2" Grid.Row="1" Text="" FontSize="18" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,4,4,4"/>
-                                <TextBlock Grid.Column="3" Grid.Row="1" Text="{Binding OEMName}" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,4,4,4"/>
+                                <TextBlock Grid.Column="3" Grid.Row="1" Text="{Binding Manufacturer}" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,4,4,4"/>
                                 <TextBlock Grid.Column="0" Grid.Row="2" Text="" FontSize="18" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,4,4,4"/>
                                 <Viewbox Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="3" Margin="12,4,12,4" HorizontalAlignment="Left">
-                                    <TextBlock Text="{Binding Path}" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" />
+                                    <TextBlock Text="{Binding Location}" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" />
                                 </Viewbox>
-                                <TextBlock Grid.Column="4" Grid.Row="0" Grid.RowSpan="3" Text="" FontSize="18" Foreground="White" Background="Transparent" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,4,4,4">
-                                    <TextBlock.InputBindings>
-                                        <MouseBinding Command="{Binding ElementName=WrapPanelControl, Path=DataContext.DelWorkSpaceCommand}" CommandParameter="{Binding .}" MouseAction="LeftClick" />
-                                    </TextBlock.InputBindings>
-                                </TextBlock>
                             </Grid>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
@@ -69,7 +63,7 @@
                             <TextBlock Text="" FontSize="24" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
                             <TextBlock Text="Import a new BSP" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
                             <StackPanel.InputBindings>
-                                <MouseBinding Command="{Binding CreateWorkspaceCommand}" MouseAction="LeftClick" />
+                                <MouseBinding Command="{Binding ImportBSPCommand}" MouseAction="LeftClick" />
                             </StackPanel.InputBindings>
                         </StackPanel>
                     </StackPanel>
