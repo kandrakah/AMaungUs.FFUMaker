@@ -42,14 +42,14 @@ namespace AMaungUs.FFUMaker.ViewModels
         }
         private void ImportBSPCommandExec(object parm)
         {
-            //ImportBSPModal createModal = new ImportBSPModal();
-            //Nullable<bool> dialogresult = createModal.ShowDialog();
-            //if (dialogresult.Value==true)
-            //{
-            //    var bsp = ((BSP)createModal.DataContext).BoardSupportPackage;
-            //    BSPs.Add(bsp);
-            //    SaveBoardSupportPackages();
-            //}
+            ImportBSPModal importModal = new ImportBSPModal();
+            Nullable<bool> dialogresult = importModal.ShowDialog();
+            if (dialogresult.Value == true)
+            {
+                var bsp = ((ImportBSPViewModel)importModal.DataContext).BoardSupportPackage;
+                BSPs.Add(bsp);
+                SaveBoardSupportPackages();
+            }
         }
         public void SaveBoardSupportPackages()
         {
