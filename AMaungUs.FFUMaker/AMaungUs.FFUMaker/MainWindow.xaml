@@ -57,6 +57,14 @@
                 <TextBlock Text="" FontFamily="Segoe MDL2 Assets" TextAlignment="Center" VerticalAlignment="Center" FontSize="18" Foreground="White" Grid.Column="0" Width="32"/>
                 <TextBlock Text="Workspace Creation" FontFamily="Segoe UI Light" TextAlignment="Left" Padding="12,0,12,0" VerticalAlignment="Center" FontSize="18" Foreground="White" Grid.Column="1" Visibility="Collapsed"/>
             </Grid>
+            <Grid x:Name="GridCreateProduct" Width="auto" Height="36" Background="Transparent" MouseDown="GridCreateProduct_MouseDown" Visibility="{Binding PreReqVM.HasAllPreRequisites , Converter={StaticResource BoolToVisibility}}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="32"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="" FontFamily="Segoe MDL2 Assets" TextAlignment="Center" VerticalAlignment="Center" FontSize="18" Foreground="White" Grid.Column="0" Width="32"/>
+                <TextBlock Text="Product Creation" FontFamily="Segoe UI Light" TextAlignment="Left" Padding="12,0,12,0" VerticalAlignment="Center" FontSize="18" Foreground="White" Grid.Column="1" Visibility="Collapsed"/>
+            </Grid>
             <Grid x:Name="GridTestImage" Width="auto" Height="36" Background="Transparent" MouseDown="GridTestImage_MouseDown" Visibility="Collapsed">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="32"/>

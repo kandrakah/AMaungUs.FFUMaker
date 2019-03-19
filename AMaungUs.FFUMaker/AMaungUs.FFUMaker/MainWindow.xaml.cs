@@ -42,6 +42,13 @@ namespace AMaungUs.FFUMaker
             MainDisplay.Children.Add(pageToDisplay);
         }
 
+        private void GridCreateProduct_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ProductPage pageToDisplay = new ProductPage();
+            MainDisplay.Children.Clear();
+            MainDisplay.Children.Add(pageToDisplay);
+        }
+
         private void GridDeviceInformation_MouseDown(object sender, MouseButtonEventArgs e)
         {
             BSPPage pageToDisplay = new BSPPage();

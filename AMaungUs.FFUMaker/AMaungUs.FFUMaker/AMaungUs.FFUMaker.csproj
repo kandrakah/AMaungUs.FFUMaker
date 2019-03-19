@@ -83,6 +83,12 @@
     <Compile Include="ViewModels\PrerequisiteViewModel.cs" />
     <Compile Include="ViewModels\BSPViewModel.cs" />
     <Compile Include="ViewModels\WorkspaceViewModel.cs" />
+    <Compile Include="Views\CreateProductModal.xaml.cs">
+      <DependentUpon>CreateProductModal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductPage.xaml.cs">
+      <DependentUpon>ProductPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CreateWorkspaceModal.xaml.cs">
       <DependentUpon>CreateWorkspaceModal.xaml</DependentUpon>
     </Compile>
@@ -119,6 +125,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\CreateProductModal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProductPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\CreateWorkspaceModal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
