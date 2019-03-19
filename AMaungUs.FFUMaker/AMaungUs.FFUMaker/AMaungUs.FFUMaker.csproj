@@ -85,6 +85,9 @@
     <Compile Include="Views\BSPPage.xaml.cs">
       <DependentUpon>BSPPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ImportBSPModel.xaml.cs">
+      <DependentUpon>ImportBSPModel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PrerequisitePage.xaml.cs">
       <DependentUpon>PrerequisitePage.xaml</DependentUpon>
     </Compile>
@@ -117,6 +120,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\BSPPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ImportBSPModel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -13,8 +13,8 @@
     <Grid>
         <StackPanel Margin="48">
             <StackPanel>
-                <TextBlock Text="Workspace Location" x:Name="TabWorkSpace" FontSize="32" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="20,0,0,0"/>
-                <TextBlock Text="Select an existing workspace" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="22,0,0,0"/>
+                <TextBlock Text="Board Support Package Location" FontSize="32" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                <TextBlock Text="Import a Board Support Package" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="22,0,0,0"/>
             </StackPanel>
             <StackPanel>
                 <ItemsControl x:Name="WrapPanelControl" ItemsSource="{Binding Workspaces}" Height="320" Margin="0,20,0,0">
@@ -62,23 +62,12 @@
                     </ItemsControl.ItemsPanel>
                 </ItemsControl>
                 <Grid Height="40"  Margin="0,40,0,0">
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,40,0">
-                            <TextBlock Text="Selected Workspace: " FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
-                            <TextBlock Text="{Binding SelectedWorkspace.Name}" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
-                        </StackPanel>
-                    </StackPanel>
+
                     <StackPanel  Orientation="Horizontal" HorizontalAlignment="Right" Margin="40,0,0,0">
-                        <StackPanel Orientation="Horizontal" >
-                            <TextBlock Text="" FontSize="24" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
-                            <TextBlock Text="Delete selected workspace" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
-                            <StackPanel.InputBindings>
-                                <MouseBinding Command="{Binding CreateWorkspaceCommand}" MouseAction="LeftClick" />
-                            </StackPanel.InputBindings>
-                        </StackPanel>
+                        
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="40,0,0,0">
-                            <TextBlock Text="" FontSize="24" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
-                            <TextBlock Text="Create a new workspace" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                            <TextBlock Text="" FontSize="24" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                            <TextBlock Text="Import a new BSP" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
                             <StackPanel.InputBindings>
                                 <MouseBinding Command="{Binding CreateWorkspaceCommand}" MouseAction="LeftClick" />
                             </StackPanel.InputBindings>
@@ -86,7 +75,7 @@
                     </StackPanel>
 
                 </Grid>
-                <TextBlock FontWeight="ExtraLight" Margin="24,20,0,0" Text="Selecting a 'New Workspace' will create a base workspace settings and storage area for a new device. You will be required to provide information regarding the device. &#10;&#13;Required information includes SMBios information for device (if needed), neccessary device drivers, and Borad Support Packages(BSPs) for the device of choice." TextWrapping="Wrap" FontSize="18" Foreground="White" FontFamily="Segoe UL Light" VerticalAlignment="Center" />
+                <TextBlock FontWeight="ExtraLight" Margin="24,20,0,0" Text="Adding a 'New BSP' will import a board support package into the master workspace for you to use on the next tab." TextWrapping="Wrap" FontSize="18" Foreground="White" FontFamily="Segoe UL Light" VerticalAlignment="Center" />
 
             </StackPanel>
 
