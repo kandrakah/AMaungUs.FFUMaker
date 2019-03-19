@@ -46,5 +46,17 @@ namespace AMaungUs.FFUMaker.Properties {
                 this["Workspaces"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string BSPs {
+            get {
+                return ((string)(this["BSPs"]));
+            }
+            set {
+                this["BSPs"] = value;
+            }
+        }
     }
 }
