@@ -11,94 +11,96 @@
         <vm:WorkspaceViewModel/>
     </UserControl.DataContext>-->
     <Grid>
-        <StackPanel Margin="48">
-            <StackPanel>
-                <TextBlock Text="Workspaces" x:Name="TabWorkSpace" FontSize="32" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="20,0,0,0"/>
-                <TextBlock Text="Select an existing workspace" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="22,0,0,0"/>
-            </StackPanel>
-            <StackPanel>
-                <ItemsControl x:Name="WrapPanelControl" ItemsSource="{Binding Workspaces}" Height="320" Margin="0,20,0,0">
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <Grid Height="80" Width="360" Background="#222" Margin="4">
-                                <Grid.InputBindings>
-                                    <MouseBinding Command="{Binding ElementName=WrapPanelControl, Path=DataContext.SelectCommand}" CommandParameter="{Binding .}" MouseAction="LeftClick" />
-                                    <MouseBinding Command="{Binding ElementName=WrapPanelControl, Path=DataContext.SelectCommand}" CommandParameter="{Binding .}" MouseAction="LeftDoubleClick" />
-                                </Grid.InputBindings>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="48"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="48"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="48"/>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="24"/>
-                                    <RowDefinition Height=".5*"/>
-                                    <RowDefinition Height=".5*"/>
-                                </Grid.RowDefinitions>
-                                <Viewbox Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Margin="12,0,12,0">
-                                    <TextBlock Text="{Binding Name}" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" />
-                                </Viewbox>
-                                <TextBlock Grid.Column="0" Grid.Row="1" Text="" FontSize="18" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,4,4,4"/>
-                                <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding Architecture}" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,4,4,4"/>
-                                <TextBlock Grid.Column="2" Grid.Row="1" Text="" FontSize="18" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,4,4,4"/>
-                                <TextBlock Grid.Column="3" Grid.Row="1" Text="{Binding OEMName}" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,4,4,4"/>
-                                <TextBlock Grid.Column="0" Grid.Row="2" Text="" FontSize="18" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,4,4,4"/>
-                                <Viewbox Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="3" Margin="12,4,12,4" HorizontalAlignment="Left">
-                                    <TextBlock Text="{Binding Path}" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" />
-                                </Viewbox>
-                                <TextBlock Grid.Column="4" Grid.Row="0" Grid.RowSpan="3" Text="" FontSize="18" Foreground="White" Background="Transparent" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,4,4,4">
-                                    <TextBlock.InputBindings>
-                                        <MouseBinding Command="{Binding ElementName=WrapPanelControl, Path=DataContext.DelWorkSpaceCommand}" CommandParameter="{Binding .}" MouseAction="LeftClick" />
-                                    </TextBlock.InputBindings>
-                                </TextBlock>
-                            </Grid>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <WrapPanel HorizontalAlignment="Left" />
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                </ItemsControl>
-                <Grid Height="40"  Margin="0,40,0,0">
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,40,0">
-                            <TextBlock Text="Selected Workspace: " FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
-                            <TextBlock Text="{Binding SelectedWorkspace.Name}" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
-                        </StackPanel>
-                    </StackPanel>
-                    <StackPanel  Orientation="Horizontal" HorizontalAlignment="Right" Margin="40,0,0,0">
-                        <StackPanel Orientation="Horizontal" >
-                            <TextBlock Text="" FontSize="24" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
-                            <TextBlock Text="Delete selected workspace" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
-                            <StackPanel.InputBindings>
-                                <MouseBinding Command="{Binding CreateWorkspaceCommand}" MouseAction="LeftClick" />
-                            </StackPanel.InputBindings>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="40,0,0,0">
-                            <TextBlock Text="" FontSize="24" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
-                            <TextBlock Text="Create a new workspace" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
-                            <StackPanel.InputBindings>
-                                <MouseBinding Command="{Binding CreateWorkspaceCommand}" MouseAction="LeftClick" />
-                            </StackPanel.InputBindings>
-                        </StackPanel>
-                    </StackPanel>
-                    
-                </Grid>
-                <TextBlock FontWeight="ExtraLight" Margin="24,20,0,0" Text="Selecting a 'New Workspace' will create a base workspace settings and storage area for a new device. You will be required to provide information regarding the device. &#10;&#13;Required information includes SMBios information for device (if needed), neccessary device drivers, and Borad Support Packages(BSPs) for the device of choice." TextWrapping="Wrap" FontSize="18" Foreground="White" FontFamily="Segoe UL Light" VerticalAlignment="Center" />
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="20">
-                    <TextBlock Text="" FontSize="18" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
-                    <TextBlock Text="Open Selected Workspace" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
-                    <StackPanel.InputBindings>
-                        <MouseBinding Command="{Binding NextCommand}" MouseAction="LeftClick" />
-                    </StackPanel.InputBindings>
+        <ScrollViewer>
+            <StackPanel Margin="48">
+                <StackPanel>
+                    <TextBlock Text="Workspaces" x:Name="TabWorkSpace" FontSize="32" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                    <TextBlock Text="Select an existing workspace" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="22,0,0,0"/>
                 </StackPanel>
-            </StackPanel>
-            
-        </StackPanel>
+                <StackPanel>
+                    <ItemsControl x:Name="WrapPanelControl" ItemsSource="{Binding Workspaces}" Height="320" Margin="0,20,0,0">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Height="80" Width="360" Background="#222" Margin="4">
+                                    <Grid.InputBindings>
+                                        <MouseBinding Command="{Binding ElementName=WrapPanelControl, Path=DataContext.SelectCommand}" CommandParameter="{Binding .}" MouseAction="LeftClick" />
+                                        <MouseBinding Command="{Binding ElementName=WrapPanelControl, Path=DataContext.SelectCommand}" CommandParameter="{Binding .}" MouseAction="LeftDoubleClick" />
+                                    </Grid.InputBindings>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="48"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="48"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="48"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="24"/>
+                                        <RowDefinition Height=".5*"/>
+                                        <RowDefinition Height=".5*"/>
+                                    </Grid.RowDefinitions>
+                                    <Viewbox Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Margin="12,0,12,0">
+                                        <TextBlock Text="{Binding Name}" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" />
+                                    </Viewbox>
+                                    <TextBlock Grid.Column="0" Grid.Row="1" Text="" FontSize="18" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,4,4,4"/>
+                                    <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding Architecture}" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,4,4,4"/>
+                                    <TextBlock Grid.Column="2" Grid.Row="1" Text="" FontSize="18" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,4,4,4"/>
+                                    <TextBlock Grid.Column="3" Grid.Row="1" Text="{Binding OEMName}" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,4,4,4"/>
+                                    <TextBlock Grid.Column="0" Grid.Row="2" Text="" FontSize="18" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,4,4,4"/>
+                                    <Viewbox Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="3" Margin="12,4,12,4" HorizontalAlignment="Left">
+                                        <TextBlock Text="{Binding Path}" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" />
+                                    </Viewbox>
+                                    <TextBlock Grid.Column="4" Grid.Row="0" Grid.RowSpan="3" Text="" FontSize="18" Foreground="White" Background="Transparent" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,4,4,4">
+                                        <TextBlock.InputBindings>
+                                            <MouseBinding Command="{Binding ElementName=WrapPanelControl, Path=DataContext.DelWorkSpaceCommand}" CommandParameter="{Binding .}" MouseAction="LeftClick" />
+                                        </TextBlock.InputBindings>
+                                    </TextBlock>
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel HorizontalAlignment="Left" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
+                    <Grid Height="40"  Margin="0,40,0,0">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,40,0">
+                                <TextBlock Text="Selected Workspace: " FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                                <TextBlock Text="{Binding SelectedWorkspace.Name}" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel  Orientation="Horizontal" HorizontalAlignment="Right" Margin="40,0,0,0">
+                            <StackPanel Orientation="Horizontal" >
+                                <TextBlock Text="" FontSize="24" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                                <TextBlock Text="Delete selected workspace" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                                <StackPanel.InputBindings>
+                                    <MouseBinding Command="{Binding CreateWorkspaceCommand}" MouseAction="LeftClick" />
+                                </StackPanel.InputBindings>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="40,0,0,0">
+                                <TextBlock Text="" FontSize="24" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                                <TextBlock Text="Create a new workspace" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                                <StackPanel.InputBindings>
+                                    <MouseBinding Command="{Binding CreateWorkspaceCommand}" MouseAction="LeftClick" />
+                                </StackPanel.InputBindings>
+                            </StackPanel>
+                        </StackPanel>
 
+                    </Grid>
+                    <TextBlock FontWeight="ExtraLight" Margin="24,20,0,0" Text="Selecting a 'New Workspace' will create a base workspace settings and storage area for a new device. You will be required to provide information regarding the device. &#10;&#13;Required information includes SMBios information for device (if needed), neccessary device drivers, and Borad Support Packages(BSPs) for the device of choice." TextWrapping="Wrap" FontSize="18" Foreground="White" FontFamily="Segoe UL Light" VerticalAlignment="Center" />
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="20">
+                        <TextBlock Text="" FontSize="18" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                        <TextBlock Text="Open Selected Workspace" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                        <StackPanel.InputBindings>
+                            <MouseBinding Command="{Binding NextCommand}" MouseAction="LeftClick" />
+                        </StackPanel.InputBindings>
+                    </StackPanel>
+                </StackPanel>
+
+            </StackPanel>
+
+        </ScrollViewer>
 
     </Grid>
 </UserControl>
