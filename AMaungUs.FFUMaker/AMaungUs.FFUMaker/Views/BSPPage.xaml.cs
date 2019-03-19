@@ -18,7 +18,7 @@ namespace AMaungUs.FFUMaker.Views
     /// <summary>
     /// Interaction logic for DeviceListPage.xaml
     /// </summary>
-    public partial class BSPPage : UserControl
+    public partial class BSPPage
     {
         public BSPPage()
         {

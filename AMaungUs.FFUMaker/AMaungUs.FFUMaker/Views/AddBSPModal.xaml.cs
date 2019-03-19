@@ -18,9 +18,9 @@ namespace AMaungUs.FFUMaker.Views
     /// <summary>
     /// Interaction logic for DeviceInformationPage.xaml
     /// </summary>
-    public partial class DeviceInformationPage : UserControl
+    public partial class AddBSPModal : UserControl
     {
-        public DeviceInformationPage()
+        public AddBSPModal()
         {
             InitializeComponent();
         }

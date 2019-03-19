@@ -82,8 +82,8 @@
     <Compile Include="Views\CreateWorkspaceModal.xaml.cs">
       <DependentUpon>CreateWorkspaceModal.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\DeviceListPage.xaml.cs">
-      <DependentUpon>DeviceListPage.xaml</DependentUpon>
+    <Compile Include="Views\BSPPage.xaml.cs">
+      <DependentUpon>BSPPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PrerequisitePage.xaml.cs">
       <DependentUpon>PrerequisitePage.xaml</DependentUpon>
@@ -94,8 +94,8 @@
     <Compile Include="Views\CreateTestImagePage.xaml.cs">
       <DependentUpon>CreateTestImagePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\DeviceInformationPage.xaml.cs">
-      <DependentUpon>DeviceInformationPage.xaml</DependentUpon>
+    <Compile Include="Views\AddBSPModal.xaml.cs">
+      <DependentUpon>AddBSPModal.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\WorkspacePage.xaml.cs">
       <DependentUpon>WorkspacePage.xaml</DependentUpon>
@@ -122,7 +122,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\DeviceListPage.xaml">
+    <Page Include="Views\BSPPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -138,7 +138,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\DeviceInformationPage.xaml">
+    <Page Include="Views\AddBSPModal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
