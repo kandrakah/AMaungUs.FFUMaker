@@ -20,9 +20,22 @@ namespace AMaungUs.FFUMaker.ViewModels
                 SetProperty(ref prereqvm, value);
             }
         }
+        WorkspaceViewModel workspaceVM;
+        public WorkspaceViewModel WorkspaceVM
+        {
+            get
+            {
+                return workspaceVM == null ? new WorkspaceViewModel() : workspaceVM;
+            }
+            set
+            {
+                SetProperty(ref workspaceVM, value);
+            }
+        }
         public MainWindowViewModel()
         {
             PreReqVM = new PrerequisiteViewModel();
+            WorkspaceVM = new WorkspaceViewModel();
         }
     }
 }

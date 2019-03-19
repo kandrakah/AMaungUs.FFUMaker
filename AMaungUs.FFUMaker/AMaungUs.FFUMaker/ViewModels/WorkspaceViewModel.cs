@@ -150,6 +150,14 @@ namespace AMaungUs.FFUMaker.ViewModels
         }
         private void NextCommandExec(object parm)
         {
+            HasOpenedWorkspace = true;
+        }
+
+        bool hasopenedworkspace = false;
+        public bool HasOpenedWorkspace
+        {
+            get { return hasopenedworkspace; }
+            set { SetProperty(ref hasopenedworkspace, value); }
         }
     }
 }
