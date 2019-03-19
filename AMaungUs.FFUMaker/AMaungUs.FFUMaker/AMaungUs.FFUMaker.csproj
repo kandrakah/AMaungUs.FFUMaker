@@ -82,6 +82,9 @@
     <Compile Include="Views\CreateWorkspaceModal.xaml.cs">
       <DependentUpon>CreateWorkspaceModal.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\DeviceListPage.xaml.cs">
+      <DependentUpon>DeviceListPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PrerequisitePage.xaml.cs">
       <DependentUpon>PrerequisitePage.xaml</DependentUpon>
     </Compile>
@@ -116,6 +119,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\CreateWorkspaceModal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DeviceListPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

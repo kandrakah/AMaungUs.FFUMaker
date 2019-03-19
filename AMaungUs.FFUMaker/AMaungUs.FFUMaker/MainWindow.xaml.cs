@@ -44,7 +44,7 @@ namespace AMaungUs.FFUMaker
 
         private void GridDeviceInformation_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            DeviceInformationPage pageToDisplay = new DeviceInformationPage();
+            DeviceListPage pageToDisplay = new DeviceListPage();
             MainDisplay.Children.Clear();
             MainDisplay.Children.Add(pageToDisplay);
         }
