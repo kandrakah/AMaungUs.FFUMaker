@@ -159,17 +159,20 @@ namespace AMaungUs.FFUMaker.ViewModels
         {
 
             var command = "";
+            var extractedPath = "";
             var locationArray = Location.Split('\\');
             var folderName = locationArray.LastOrDefault();
             var needsExtraction = SelectedManufacturer.PSImportCmd.Contains("<ExtractedPath>");
+            if (needsExtraction)
+            {
+                extractedPath = @"c:\\temp\\" + Guid.NewGuid().ToString();
+                System.IO.Compression.ZipFile.ExtractToDirectory(Location, extractedPath);
+            }
             var bspName = SelectedManufacturer.BSPName.Replace("<FolderName>", folderName);
             if (SelectedManufacturer.MoveUp1Directory)
                 Location = Path.GetDirectoryName(Location);
             command = SelectedManufacturer.PSImportCmd.Replace("<BSPName>", bspName).Replace("<Path>", Location);
-            if (needsExtraction)
-            {
-                //command = command.Replace("<ExtractPath>",)
-            }
+            command += command.Replace("<ExtractedPath>", extractedPath);
             var commands = "\n" + "$newCmd = '" + command + "'" + "\n";
             commands += "invoke-expression  $newCmd";
             commands += "\n" + "$bldCmd = '" + SelectedManufacturer.BuildCmd.Replace("<BSPName>", bspName) + "'" + "\n";
