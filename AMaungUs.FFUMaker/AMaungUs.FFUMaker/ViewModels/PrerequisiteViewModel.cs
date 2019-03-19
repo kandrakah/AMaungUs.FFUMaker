@@ -171,12 +171,12 @@ namespace AMaungUs.FFUMaker.ViewModels
             if (key != null)
             {
                 keyFound = true;
+                key.Close();
             }
             else
             {
                 keyFound = false;
             }
-            key.Close();
             return keyFound;
 
         }
