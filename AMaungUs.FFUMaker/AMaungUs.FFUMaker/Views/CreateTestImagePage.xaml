@@ -12,8 +12,14 @@
             <TextBlock Text="Image Creation Log" Foreground="White" FontFamily="Segoe UI Light" Margin="0,8,0,0"/>
             <TextBox Margin="20,2,20,0" Text="{Binding WorkspaceName}" Height="240" AcceptsReturn="True" TextWrapping="Wrap"/>
             <ProgressBar  Margin="20,0,20,0" Height="4" IsIndeterminate="False" />
-            
-            
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
+                <TextBlock Text="" FontSize="24" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                <TextBlock Text="Create Test Image" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                <StackPanel.InputBindings>
+                    <MouseBinding Command="{Binding CreateCommand}" MouseAction="LeftClick" />
+                </StackPanel.InputBindings>
+            </StackPanel>
 
         </StackPanel>
 
