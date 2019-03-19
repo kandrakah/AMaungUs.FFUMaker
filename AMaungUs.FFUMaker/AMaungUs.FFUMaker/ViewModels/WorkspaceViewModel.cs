@@ -44,14 +44,6 @@ namespace AMaungUs.FFUMaker.ViewModels
             var savedjson = Properties.Settings.Default.Workspaces;
             var _workspaces = JsonConvert.DeserializeObject<ObservableCollection<Workspace>>(savedjson);
             Workspaces = _workspaces;
-            //Workspaces.Add(new Workspace { Architecture = "ARM", Name = "Test", OEMName = "CNCY", Path = "C:\\IoT" });
-            //Workspaces.Add(new Workspace { Architecture = "x86", Name = "FFU Maker", OEMName = "CNCY", Path = "C:\\IoT\\Workspace\\Cncy\\Pi" });
-            //Workspaces.Add(new Workspace { Architecture = "x64", Name = "Snapdragon Test", OEMName = "CNCY", Path = "C:\\IoT\\WorkSpaces\\410C" });
-            //Workspaces.Add(new Workspace { Architecture = "x64", Name = "Test", OEMName = "CNCY", Path = "C:\\IoT1" });
-            //Workspaces.Add(new Workspace { Architecture = "x64", Name = "Test", OEMName = "CNCY", Path = "C:\\IoT2" });
-            //Workspaces.Add(new Workspace { Architecture = "x64", Name = "Test", OEMName = "CNCY", Path = "C:\\IoT3" });
-            //Workspaces.Add(new Workspace { Architecture = "x64", Name = "Test", OEMName = "CNCY", Path = "C:\\IoT4" });
-            //Workspaces.Add(new Workspace { Architecture = "x64", Name = "Test", OEMName = "CNCY", Path = "C:\\IoT5" });
             CreateWorkspaceCommand = new DelegateCommand<object>(this.CreateWorkspaceCmdExec, x => true);
             OnPropertyChanged("CreateWorkspaceCommand");
             DelWorkSpaceCommand = new DelegateCommand<object>(this.DelWorkspaceCommandExec, x => true);

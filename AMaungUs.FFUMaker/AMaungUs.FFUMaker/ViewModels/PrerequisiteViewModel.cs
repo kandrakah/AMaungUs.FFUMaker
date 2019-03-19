@@ -9,11 +9,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Threading;
 
 namespace AMaungUs.FFUMaker.ViewModels
 {
     public class PrerequisiteViewModel : BaseViewModel
     {
+        private DispatcherTimer timer;
         PrereqDefinition prereqDefinition;
         public PrereqDefinition PrereqDefinition
         {
@@ -88,6 +90,10 @@ namespace AMaungUs.FFUMaker.ViewModels
         }
         public PrerequisiteViewModel()
         {
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromMilliseconds(500);
+            timer.Tick += Timer_Tick;
+            timer.Start();
             LoadJson();
             GetAdkAddOnKitPath();
             ValidatePreRequisites();
@@ -97,6 +103,13 @@ namespace AMaungUs.FFUMaker.ViewModels
             OnPropertyChanged("SetADKAddOnKitLocCmd");
             ValidateCommand = new DelegateCommand<object>(this.ValidateCommandExecution, x => true);
             OnPropertyChanged("ValidateCommand");
+        }
+        private void Timer_Tick(object sender, object e)
+        {
+            if (!HasAllPreRequisites)
+                ValidatePreRequisites();
+            else
+                timer.Stop();
         }
         private void LoadJson()
         {
