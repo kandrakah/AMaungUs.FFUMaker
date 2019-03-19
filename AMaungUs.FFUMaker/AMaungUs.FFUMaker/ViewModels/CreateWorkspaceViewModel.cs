@@ -8,6 +8,8 @@ using System.Windows.Input;
 using System.Management.Automation;
 using System.Collections.ObjectModel;
 using System.Management.Automation.Runspaces;
+using System.IO;
+using System.Diagnostics;
 
 namespace AMaungUs.FFUMaker.ViewModels
 {
@@ -91,30 +93,37 @@ namespace AMaungUs.FFUMaker.ViewModels
         }
         private void RunPowershellScripts()
         {
-            string cmdArg = prerequisites.AdkAddOnKitPath+ "\\IoTCorePShell.cmd";
-            Runspace runspace = RunspaceFactory.CreateRunspace();
-            runspace.ApartmentState = System.Threading.ApartmentState.STA;
-            runspace.ThreadOptions = PSThreadOptions.UseCurrentThread;
-
-
-            runspace.Open();
-
-            Pipeline pipeline = runspace.CreatePipeline();
-
-            pipeline.Commands.AddScript(cmdArg);
-            pipeline.Commands[0].MergeMyResults(PipelineResultTypes.Error, PipelineResultTypes.Output);
-            Collection<PSObject> results = pipeline.Invoke();
-            var error = pipeline.Error.ReadToEnd();
-            runspace.Close();
-
-            if (error.Count >= 1)
+            string file = prerequisites.AdkAddOnKitPath+ "\\Tools\\LaunchShell.ps1";
+            Directory.CreateDirectory(WorkspacePath + "\\" + WorkspaceName);
+            FileInfo fInfo = new FileInfo(file);
+            var f = fInfo.DirectoryName;
+            string newFilePath = f + @"\LaunchshellMod.ps1";
+            string commands = string.Empty;
+            using (StreamReader sr = new StreamReader(file))
             {
-                string errors = "";
-                foreach (var Error in error)
-                {
-                    errors = errors + " " + Error.ToString();
-                }
+                // and plunk the contents in the textbox
+                commands = sr.ReadToEnd();
             }
+            commands += "\n" + "$newCmd = 'new-ws " + WorkspacePath + "\\" + WorkspaceName + " " + OEMName + " " + Architecture +"'" + "\n";
+            commands += "invoke-expression  $newCmd";
+            using (StreamWriter sw = new StreamWriter(newFilePath))
+            {
+                sw.WriteLine(commands);
+            }
+            Process p = new Process();
+            ProcessStartInfo psi = new ProcessStartInfo();
+            psi.FileName = @"C:\windows\system32\windowspowershell\v1.0\powershell.exe ";
+            //psi.Arguments = @" -noexit -ExecutionPolicy Bypass -Command C:\Dev\OpenSource\iot-adk-addonkit\Tools\Launchshell.ps1 -Verb runAs";
+            psi.Arguments = @" -noexit -ExecutionPolicy Bypass -Command " + newFilePath + " -Verb runAs";
+            psi.RedirectStandardInput = true;
+            psi.RedirectStandardOutput = true;
+            psi.UseShellExecute = false;
+            psi.CreateNoWindow = true;
+            p.StartInfo = psi;
+            p.Start();
+            p.WaitForExit(2000);
+            p.StandardInput.WriteLine("exit");
+            File.Delete(newFilePath);
         }
 
         System.Windows.Input.ICommand pathSelectionCommand;
