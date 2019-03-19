@@ -17,7 +17,7 @@ namespace AMaungUs.FFUMaker.Views
     /// <summary>
     /// Interaction logic for CreateProductModal.xaml
     /// </summary>
-    public partial class CreateProductModal : Window
+    public partial class CreateProductModal
     {
         public CreateProductModal()
         {

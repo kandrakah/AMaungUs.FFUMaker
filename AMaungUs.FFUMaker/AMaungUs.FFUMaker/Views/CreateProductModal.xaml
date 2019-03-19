@@ -1,12 +1,13 @@
-﻿<Window x:Class="AMaungUs.FFUMaker.Views.CreateProductModal"
+﻿<fw:AcrylicWindow x:Class="AMaungUs.FFUMaker.Views.CreateProductModal"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AMaungUs.FFUMaker.Views"
         mc:Ignorable="d"
         Background="Black"
-        Title="CreateProductModal" Height="450" Width="800">
+        Title="AMaungUs: FFUMaker - Create a new product" Height="420" Width="480">
     <Grid>
         <StackPanel x:Name="spSMBios" Visibility="Visible" Grid.Column="1">
 
