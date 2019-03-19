@@ -13,7 +13,13 @@ namespace AMaungUs.FFUMaker.ViewModels
     {
         ObservableCollection<Workspace> workspaces;
         Workspace _workspace;
-
+        public string Title
+        {
+            get
+            {
+                return SelectedWorkspace.Name + " - Product(s)";
+            }
+        }
         public Workspace SelectedWorkspace
         {
             get
@@ -23,6 +29,7 @@ namespace AMaungUs.FFUMaker.ViewModels
             set
             {
                 SetProperty(ref _workspace, value);
+                OnPropertyChanged("Title");
             }
         }
         public ProductViewModel()

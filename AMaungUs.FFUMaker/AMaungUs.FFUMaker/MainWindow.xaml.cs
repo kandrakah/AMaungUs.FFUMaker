@@ -78,6 +78,7 @@ namespace AMaungUs.FFUMaker
 
         private void GridCreateProduct_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
+            GridDeviceInformation_MouseDown(sender, null);
             DisplaySelectedWorkspace();
         }
     }
