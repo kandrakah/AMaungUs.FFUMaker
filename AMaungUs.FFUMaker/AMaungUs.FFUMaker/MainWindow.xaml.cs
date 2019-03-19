@@ -45,11 +45,16 @@ namespace AMaungUs.FFUMaker
 
         private void GridCreateProduct_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            DisplaySelectedWorkspace();
+        }
+        private void DisplaySelectedWorkspace()
+        {
+
             ProductPage pageToDisplay = new ProductPage();
+            ((ProductViewModel)pageToDisplay.DataContext).SelectedWorkspace = ((MainWindowViewModel)this.DataContext).WorkspaceVM.SelectedWorkspace;
             MainDisplay.Children.Clear();
             MainDisplay.Children.Add(pageToDisplay);
         }
-
         private void GridDeviceInformation_MouseDown(object sender, MouseButtonEventArgs e)
         {
             BSPPage pageToDisplay = new BSPPage();
@@ -69,6 +74,11 @@ namespace AMaungUs.FFUMaker
             AboutPage pageToDisplay = new AboutPage();
             MainDisplay.Children.Clear();
             MainDisplay.Children.Add(pageToDisplay);
+        }
+
+        private void GridCreateProduct_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            DisplaySelectedWorkspace();
         }
     }
 }
