@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:AMaungUs.FFUMaker.Views"
              xmlns:vm="clr-namespace:AMaungUs.FFUMaker.ViewModels"
              mc:Ignorable="d" 
-             d:DesignHeight="720" d:DesignWidth="1200">
+             d:DesignHeight="760" d:DesignWidth="1200">
     <!--<UserControl.DataContext>
         <vm:WorkspaceViewModel/>
     </UserControl.DataContext>-->
@@ -88,7 +88,7 @@
                 </Grid>
                 <TextBlock FontWeight="ExtraLight" Margin="24,20,0,0" Text="Selecting a 'New Workspace' will create a base workspace settings and storage area for a new device. You will be required to provide information regarding the device. &#10;&#13;Required information includes SMBios information for device (if needed), neccessary device drivers, and Borad Support Packages(BSPs) for the device of choice." TextWrapping="Wrap" FontSize="18" Foreground="White" FontFamily="Segoe UL Light" VerticalAlignment="Center" />
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="20">
-                    <TextBlock Text="" FontSize="18" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                    <TextBlock Text="" FontSize="18" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
                     <TextBlock Text="Open Selected Workspace" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
                     <StackPanel.InputBindings>
                         <MouseBinding Command="{Binding NextCommand}" MouseAction="LeftClick" />
