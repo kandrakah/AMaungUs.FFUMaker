@@ -71,6 +71,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="Models\BSP.cs" />
     <Compile Include="Models\Prerequisite.cs" />
     <Compile Include="Models\Workspace.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="ViewModels\DelegateCommand.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\PrerequisiteViewModel.cs" />
+    <Compile Include="ViewModels\BSPViewModel.cs" />
     <Compile Include="ViewModels\WorkspaceViewModel.cs" />
     <Compile Include="Views\CreateWorkspaceModal.xaml.cs">
       <DependentUpon>CreateWorkspaceModal.xaml</DependentUpon>
