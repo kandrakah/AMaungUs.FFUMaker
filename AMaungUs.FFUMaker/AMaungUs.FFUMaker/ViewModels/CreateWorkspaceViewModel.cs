@@ -158,7 +158,12 @@ namespace AMaungUs.FFUMaker.ViewModels
             psi.CreateNoWindow = true;
             p.StartInfo = psi;
             p.Start();
-            p.StandardInput.WriteLine("exit");
+            //p.StandardInput.WriteLine("OEM");
+            //p.StandardInput.WriteLine("FAM");
+            //p.StandardInput.WriteLine("1234");
+            //p.StandardInput.WriteLine("RPi2");
+            //p.StandardInput.WriteLine("RPi2");
+            p.StandardInput.WriteLine("Exit");
             p.WaitForExit();
             File.Delete(newFilePath);
         }
@@ -186,6 +191,8 @@ namespace AMaungUs.FFUMaker.ViewModels
             commands += "invoke-expression  $bldCmd";
             commands += "\n" + "$bldPkgAllCmd = 'New-IoTCabPackage All'" + "\n";
             commands += "invoke-expression  $bldPkgAllCmd";
+            //commands += "\n" + "$addCmd = 'Add-IoTProduct ProductA " + bspName + "'" + "\n";
+            //commands += "invoke-expression  $addCmd";
             return commands;
         }
         System.Windows.Input.ICommand pathSelectionCommand;
@@ -234,7 +241,7 @@ namespace AMaungUs.FFUMaker.ViewModels
         {
             var fileDialog = new System.Windows.Forms.OpenFileDialog();
             fileDialog.Multiselect = false;
-            fileDialog.Filter = "RPi BSP|*.zip;";
+            fileDialog.Filter = "RPi, Qualcom|*.zip;";
             if (Location != "Path not set.")
             {
                 fileDialog.FileName = Location;
