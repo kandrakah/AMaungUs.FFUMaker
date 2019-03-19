@@ -7,9 +7,9 @@
              xmlns:vm="clr-namespace:AMaungUs.FFUMaker.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="720" d:DesignWidth="1200">
-    <UserControl.DataContext>
+    <!--<UserControl.DataContext>
         <vm:WorkspaceViewModel/>
-    </UserControl.DataContext>
+    </UserControl.DataContext>-->
     <Grid>
         <StackPanel Margin="48">
             <StackPanel>

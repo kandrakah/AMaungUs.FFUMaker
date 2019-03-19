@@ -38,6 +38,7 @@ namespace AMaungUs.FFUMaker
         private void GridCreateWorkSpace_MouseDown(object sender, MouseButtonEventArgs e)
         {
             WorkspacePage pageToDisplay = new WorkspacePage();
+            pageToDisplay.DataContext = ((MainWindowViewModel)this.DataContext).WorkspaceVM;
             MainDisplay.Children.Clear();
             MainDisplay.Children.Add(pageToDisplay);
         }
