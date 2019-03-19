@@ -60,6 +60,24 @@
                 <MouseBinding Command="{Binding PathSelectionCommand}" MouseAction="LeftClick" />
             </Rectangle.InputBindings>
         </Rectangle>
+        <ComboBox ItemsSource="{Binding BSPManufacturerDefinitions}" SelectedItem="{Binding SelectedManufacturer}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" Background="Transparent" >
+                        <TextBox Text="{Binding Manufacturer}" BorderThickness="0" Background="Transparent"></TextBox>
+                        <TextBox Text=" - " BorderThickness="0" Background="Transparent"></TextBox>
+                        <TextBox Text="{Binding Board}" BorderThickness="0" Background="Transparent"></TextBox>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <TextBlock Text="BSP Path" Foreground="White" FontFamily="Segoe UI Light"  Margin="0,8,0,0"/>
+        <TextBox Style="{StaticResource placeHolder}" Tag="Location Path" Text="{Binding Location}" Height="24"/>
+        <Rectangle Fill="Transparent" Height="23" Margin="0,-23,0,0">
+            <Rectangle.InputBindings>
+                <MouseBinding Command="{Binding BSPPathSelectionCommand}" MouseAction="LeftClick" />
+            </Rectangle.InputBindings>
+        </Rectangle>
         <Grid>
             <!--<StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,20,0,0">
                 <TextBlock Text="" FontSize="24" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>

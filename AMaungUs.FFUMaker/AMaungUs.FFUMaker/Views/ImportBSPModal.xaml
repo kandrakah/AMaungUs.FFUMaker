@@ -45,16 +45,26 @@
 
     </Window.Resources>
     <StackPanel Margin="24">
-        <TextBlock Text="Create a new workspace" x:Name="TabWorkSpace" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" />
-        <TextBlock Text="Workspace Name" Foreground="White" FontFamily="Segoe UI Light" Margin="0,8,0,0"/>
-        <TextBox Style="{StaticResource placeHolder}" Tag="Workspace Name" Text="{Binding WorkspaceName}" Height="24"/>
-        <TextBlock Text="OEM Name" Foreground="White" FontFamily="Segoe UI Light"  Margin="0,8,0,0"/>
-        <TextBox Style="{StaticResource placeHolder}" Tag="OEM Name" Height="24" Text="{Binding OEMName}"/>
+        <TextBlock Text="Import a new Board Support Package" x:Name="TabWorkSpace" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" />
+        <TextBlock Text="Board Name" Foreground="White" FontFamily="Segoe UI Light" Margin="0,8,0,0"/>
+        <TextBox Style="{StaticResource placeHolder}" Tag="Board Name" Text="{Binding BoardName}" Height="24"/>
+        <TextBlock Text="Manufacturer" Foreground="White" FontFamily="Segoe UI Light"  Margin="0,8,0,0"/>
+        <ComboBox ItemsSource="{Binding BSPManufacturerDefinitions}" SelectedItem="{Binding SelectedManufacturer}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" Background="Transparent" >
+                        <TextBox Text="{Binding Manufacturer}" BorderThickness="0" Background="Transparent"></TextBox>
+                        <TextBox Text=" - " BorderThickness="0" Background="Transparent"></TextBox>
+                        <TextBox Text="{Binding Board}" BorderThickness="0" Background="Transparent"></TextBox>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
         <TextBlock Text="Architecture" Foreground="White" FontFamily="Segoe UI Light"  Margin="0,8,0,0"/>
         <ComboBox Width="200" Height="24" FontSize="14" HorizontalAlignment="Left" SelectedValue="{Binding Architecture}" ItemsSource="{Binding ArchitectureList}">
         </ComboBox>
         <TextBlock Text="Path" Foreground="White" FontFamily="Segoe UI Light"  Margin="0,8,0,0"/>
-        <TextBox Style="{StaticResource placeHolder}" Tag="Location Path" Text="{Binding WorkspacePath}" Height="24"/>
+        <TextBox Style="{StaticResource placeHolder}" Tag="Location Path" Text="{Binding Location}" Height="24"/>
         <Rectangle Fill="Transparent" Height="23" Margin="0,-23,0,0">
             <Rectangle.InputBindings>
                 <MouseBinding Command="{Binding PathSelectionCommand}" MouseAction="LeftClick" />
@@ -67,9 +77,9 @@
             </StackPanel>-->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">
                 <TextBlock Text="" FontSize="24" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
-                <TextBlock Text="Create Workspace" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                <TextBlock Text="Import Board Support Package" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
                 <StackPanel.InputBindings>
-                    <MouseBinding Command="{Binding CreateCommand}" MouseAction="LeftClick" />
+                    <MouseBinding Command="{Binding ImportCommand}" MouseAction="LeftClick" />
                 </StackPanel.InputBindings>
             </StackPanel>
         </Grid>

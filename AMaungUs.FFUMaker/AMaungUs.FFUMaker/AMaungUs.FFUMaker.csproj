@@ -72,6 +72,7 @@
     </ApplicationDefinition>
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Models\BSP.cs" />
+    <Compile Include="Models\BSPManufacturerInfo.cs" />
     <Compile Include="Models\Prerequisite.cs" />
     <Compile Include="Models\Workspace.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
@@ -170,6 +171,9 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <Content Include="Assets\PrerequisiteLinks.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\BSPList.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="packages.config" />

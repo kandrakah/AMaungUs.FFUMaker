@@ -1,0 +1,35 @@
+[
+  {
+    "Manufacturer": "Qualcom",
+    "Board": "DragonBoard 410c",
+    "PSImportCmd": "Import-QCBSP \"<Path>\" \"<ExtractPath>\" -ImportBSP",
+    "BSPName": "QCDB410C",
+    "BuildCmd": "buildpkg <BSPName>",
+    "NeedsExtraction": "true",
+    "Info": "n/a",
+    "PickFolder": "true",
+    "MoveUp1Directory":  "false"
+  },
+  {
+    "Manufacturer": "Raspberry Pi",
+    "Board": "RPi2",
+    "PSImportCmd": "Import-IoTBSP <BSPName> \"<Path>\"",
+    "BSPName": "RPi2",
+    "BuildCmd": "buildpkg <BSPName>",
+    "NeedsExtraction": "false",
+    "Info": "Select the zipped file containing the BSP. This is not made for custom build BSP on RPi.",
+    "PickFolder": "false",
+    "MoveUp1Directory": "false"
+  },
+  {
+    "Manufacturer": "Intel",
+    "Board": "BYT,BSW",
+    "PSImportCmd": "Import-IoTBSP <BSPName> \"<Path>\"",
+    "BSPName": "<FolderName>",
+    "BuildCmd": "buildpkg <BSPName>",
+    "NeedsExtraction": "false",
+    "Info": "Select the unzipped folder of the BSP. Sometimes it is in C:\\Program Files (x86)\\Intel IoT. Drill as deep as the BSP folder.",
+    "PickFolder": "true",
+    "MoveUp1Directory": "true"
+  }
+]

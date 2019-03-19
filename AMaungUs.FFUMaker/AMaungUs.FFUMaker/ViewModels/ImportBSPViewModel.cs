@@ -1,6 +1,9 @@
 ﻿using AMaungUs.FFUMaker.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +15,12 @@ namespace AMaungUs.FFUMaker.ViewModels
     {
 
         PrerequisiteViewModel prerequisites;
+        private List<BSPManufacturerInfo> bspManufacturerDefinitions;
+        public List<BSPManufacturerInfo> BSPManufacturerDefinitions
+        {
+            get { return bspManufacturerDefinitions == null? new List<BSPManufacturerInfo>(): bspManufacturerDefinitions; }
+            set { SetProperty(ref bspManufacturerDefinitions, value); }
+        }
         string location;
         public string Location
         {
@@ -24,10 +33,10 @@ namespace AMaungUs.FFUMaker.ViewModels
             get { return boardName; }
             set { SetProperty(ref boardName, value); }
         }
-        string manufacturer;
-        public string Manufacturer
+        BSPManufacturerInfo manufacturer;
+        public BSPManufacturerInfo SelectedManufacturer
         {
-            get { return manufacturer; }
+            get { return manufacturer==null? new BSPManufacturerInfo(): manufacturer; }
             set { SetProperty(ref manufacturer, value); }
         }
         string architecture;
@@ -60,6 +69,16 @@ namespace AMaungUs.FFUMaker.ViewModels
         {
             prerequisites = new PrerequisiteViewModel();
             OnPropertyChanged("ArchitectureList");
+            LoadJson();
+        }
+        private void LoadJson()
+        {
+            var path = System.AppDomain.CurrentDomain.BaseDirectory;
+            using (StreamReader r = new StreamReader(path + "/Assets/BSPList.json"))
+            {
+                string json = r.ReadToEnd();
+                BSPManufacturerDefinitions = JsonConvert.DeserializeObject<List<BSPManufacturerInfo>>(json);
+            }
         }
         System.Windows.Input.ICommand importCommand;
         public ICommand ImportCommand
@@ -78,49 +97,65 @@ namespace AMaungUs.FFUMaker.ViewModels
         }
         private bool ValidateWorkspace()
         {
-            if (string.IsNullOrEmpty(BoardName) || string.IsNullOrEmpty(Manufacturer) || string.IsNullOrEmpty(Architecture) || string.IsNullOrEmpty(Location))
+            if (string.IsNullOrEmpty(BoardName) || string.IsNullOrEmpty(SelectedManufacturer.Manufacturer) || string.IsNullOrEmpty(Architecture) || string.IsNullOrEmpty(Location))
                 return false;
             else
             {
-                BoardSupportPackage = new BSP() { Architecture = Architecture, Manufacturer = Manufacturer, BoardName = BoardName, Location = Location };
+                BoardSupportPackage = new BSP() { Architecture = Architecture, Manufacturer = SelectedManufacturer.Manufacturer, BoardName = BoardName, Location = Location };
                 return true;
             }
         }
         private void RunPowershellScripts()
         {
-            //string file = prerequisites.AdkAddOnKitPath + "\\Tools\\LaunchShell.ps1";
-            //Directory.CreateDirectory(WorkspacePath + "\\" + WorkspaceName);
-            //FileInfo fInfo = new FileInfo(file);
-            //var f = fInfo.DirectoryName;
-            //string newFilePath = f + @"\LaunchshellMod.ps1";
-            //string commands = string.Empty;
-            //using (StreamReader sr = new StreamReader(file))
-            //{
-            //    // and plunk the contents in the textbox
-            //    commands = sr.ReadToEnd();
-            //}
-            //commands += "\n" + "$newCmd = 'new-ws " + WorkspacePath + "\\" + WorkspaceName + " " + OEMName + " " + Architecture + "'" + "\n";
-            //commands += "invoke-expression  $newCmd";
-            //using (StreamWriter sw = new StreamWriter(newFilePath))
-            //{
-            //    sw.WriteLine(commands);
-            //}
-            //Process p = new Process();
-            //ProcessStartInfo psi = new ProcessStartInfo();
-            //psi.FileName = @"C:\windows\system32\windowspowershell\v1.0\powershell.exe ";
-            ////psi.Arguments = @" -noexit -ExecutionPolicy Bypass -Command C:\Dev\OpenSource\iot-adk-addonkit\Tools\Launchshell.ps1 -Verb runAs";
-            //psi.Arguments = @" -noexit -ExecutionPolicy Bypass -Command " + newFilePath + " -Verb runAs";
-            //psi.RedirectStandardInput = true;
-            //psi.RedirectStandardOutput = true;
-            //psi.UseShellExecute = false;
-            //psi.CreateNoWindow = true;
-            //p.StartInfo = psi;
-            //p.Start();
-            //p.WaitForExit(2000);
-            //p.StandardInput.WriteLine("exit");
-            //File.Delete(newFilePath);
+            string file = prerequisites.AdkAddOnKitPath + "\\Tools\\LaunchShell.ps1";
+            FileInfo fInfo = new FileInfo(file);
+            var f = fInfo.DirectoryName;
+            string newFilePath = f + @"\LaunchshellMod.ps1";
+            string commands = string.Empty;
+            using (StreamReader sr = new StreamReader(file))
+            {
+                // and plunk the contents in the textbox
+                commands = sr.ReadToEnd();
+            }
+            commands += GetCommandForSelectedBoard();
+            using (StreamWriter sw = new StreamWriter(newFilePath))
+            {
+                sw.WriteLine(commands);
+            }
+            Process p = new Process();
+            ProcessStartInfo psi = new ProcessStartInfo();
+            psi.FileName = @"C:\windows\system32\windowspowershell\v1.0\powershell.exe ";
+            psi.Arguments = @" -noexit -ExecutionPolicy Bypass -Command " + newFilePath + " -Verb runAs";
+            psi.RedirectStandardInput = true;
+            psi.RedirectStandardOutput = true;
+            psi.UseShellExecute = false;
+            psi.CreateNoWindow = true;
+            p.StartInfo = psi;
+            p.Start();
+            p.WaitForExit(15000);
+            p.StandardInput.WriteLine("exit");
+            File.Delete(newFilePath);
         }
 
+        public string GetCommandForSelectedBoard()
+        {
+
+            var command = "";
+            var locationArray = Location.Split('\\');
+            var folderName = locationArray.LastOrDefault();
+            var needsExtraction = SelectedManufacturer.PSImportCmd.Contains("<ExtractedPath>");
+            var bspName = SelectedManufacturer.BSPName.Replace("<FolderName>", folderName);
+            command = SelectedManufacturer.PSImportCmd.Replace("<BSPName>", bspName).Replace("<Path>", Location);
+            if (needsExtraction)
+            {
+                //command = command.Replace("<ExtractPath>",)
+            }
+            var commands = "\n" + "$newCmd = '" + command + "'" + "\n";
+            commands += "invoke-expression  $newCmd";
+            commands += "\n" + "$bldCmd = '" + SelectedManufacturer.BuildCmd.Replace("<BSPName>",bspName) + "'" + "\n";
+            commands += "invoke-expression  $bldCmd";
+            return commands;
+        }
         System.Windows.Input.ICommand pathSelectionCommand;
         public ICommand PathSelectionCommand
         {
@@ -128,6 +163,38 @@ namespace AMaungUs.FFUMaker.ViewModels
             set { SetProperty(ref pathSelectionCommand, value); }
         }
         private void PathSelectionCommandExec(object parm)
+        {
+            if(SelectedManufacturer.PickFolder)
+            {
+                SelectFolder();
+            }
+            else
+            {
+                SelectFile();
+            }
+        }
+        private void SelectFile()
+        {
+            var fileDialog = new System.Windows.Forms.OpenFileDialog();
+            fileDialog.Multiselect = false;
+            fileDialog.Filter = "RPi BSP|*.zip;";
+            if (Location != "Path not set.")
+            {
+                fileDialog.FileName = Location;
+            }
+            var result = fileDialog.ShowDialog();
+            switch (result)
+            {
+                case System.Windows.Forms.DialogResult.OK:
+                    var file = fileDialog.FileName;
+                    Location = file;
+                    break;
+                case System.Windows.Forms.DialogResult.Cancel:
+                default:
+                    break;
+            }
+        }
+        private void SelectFolder()
         {
             var folderDialog = new System.Windows.Forms.FolderBrowserDialog();
             if (Location != "Path not set.")
