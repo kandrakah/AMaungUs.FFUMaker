@@ -6,13 +6,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AMaungUs.FFUMaker.Views"
         xmlns:vm="clr-namespace:AMaungUs.FFUMaker.ViewModels"
+        xmlns:this2that="clr-namespace:AMaungUs.FFUMaker.Converters"
         mc:Ignorable="d"
         Background="Black"
-        Title="AMaungUs: FFUMaker - Create a new workspace" Height="420" Width="480">
+        Title="AMaungUs: FFUMaker - Create a new workspace" Height="500" Width="480">
     <Window.DataContext>
         <vm:CreateWorkspaceViewModel/>
     </Window.DataContext>
     <Window.Resources>
+        <this2that:BoolToVisibilityConverter x:Key="BoolToVisibility" />
         <Style x:Key="placeHolder" TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
             <Setter Property="Template">
                 <Setter.Value>
@@ -46,6 +48,7 @@
     </Window.Resources>
     <StackPanel Margin="24">
         <TextBlock Text="Create a new workspace" x:Name="TabWorkSpace" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" />
+        <ProgressBar Foreground="White" IsIndeterminate="True" Visibility="{Binding ExecutingPowershell, Converter={StaticResource BoolToVisibility}}"></ProgressBar>
         <TextBlock Text="Workspace Name" Foreground="White" FontFamily="Segoe UI Light" Margin="0,8,0,0"/>
         <TextBox Style="{StaticResource placeHolder}" Tag="Workspace Name" Text="{Binding WorkspaceName}" Height="24"/>
         <TextBlock Text="OEM Name" Foreground="White" FontFamily="Segoe UI Light"  Margin="0,8,0,0"/>
@@ -53,20 +56,21 @@
         <TextBlock Text="Architecture" Foreground="White" FontFamily="Segoe UI Light"  Margin="0,8,0,0"/>
         <ComboBox Width="200" Height="24" FontSize="14" HorizontalAlignment="Left" SelectedValue="{Binding Architecture}" ItemsSource="{Binding ArchitectureList}">
         </ComboBox>
-        <TextBlock Text="Path" Foreground="White" FontFamily="Segoe UI Light"  Margin="0,8,0,0"/>
+        <TextBlock Text="Workspace Path" Foreground="White" FontFamily="Segoe UI Light"  Margin="0,8,0,0"/>
         <TextBox Style="{StaticResource placeHolder}" Tag="Location Path" Text="{Binding WorkspacePath}" Height="24"/>
         <Rectangle Fill="Transparent" Height="23" Margin="0,-23,0,0">
             <Rectangle.InputBindings>
                 <MouseBinding Command="{Binding PathSelectionCommand}" MouseAction="LeftClick" />
             </Rectangle.InputBindings>
         </Rectangle>
+        <TextBlock Text="Manufacturer" Foreground="White" FontFamily="Segoe UI Light"  Margin="0,8,0,0"/>
         <ComboBox ItemsSource="{Binding BSPManufacturerDefinitions}" SelectedItem="{Binding SelectedManufacturer}">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal" Background="Transparent" >
-                        <TextBox Text="{Binding Manufacturer}" BorderThickness="0" Background="Transparent"></TextBox>
-                        <TextBox Text=" - " BorderThickness="0" Background="Transparent"></TextBox>
-                        <TextBox Text="{Binding Board}" BorderThickness="0" Background="Transparent"></TextBox>
+                        <TextBlock Text="{Binding Manufacturer}" Background="Transparent"></TextBlock>
+                        <TextBlock Text=" - " Background="Transparent"></TextBlock>
+                        <TextBlock Text="{Binding Board}" Background="Transparent"></TextBlock>
                     </StackPanel>
                 </DataTemplate>
             </ComboBox.ItemTemplate>

@@ -79,6 +79,12 @@ namespace AMaungUs.FFUMaker.ViewModels
             get { return manufacturer == null ? new BSPManufacturerInfo() : manufacturer; }
             set { SetProperty(ref manufacturer, value); }
         }
+        bool executingPowershell = false;
+        public bool ExecutingPowershell
+        {
+            get { return executingPowershell; }
+            set { SetProperty(ref executingPowershell, value); }
+        }
         public event EventHandler Create;
         public CreateWorkspaceViewModel()
         {
@@ -106,6 +112,7 @@ namespace AMaungUs.FFUMaker.ViewModels
             var validateResult = ValidateWorkspace();
             if (validateResult)
             {
+                ExecutingPowershell = true;
                 RunPowershellScripts();
                 this.Create(parm, new EventArgs());
             }
@@ -122,6 +129,7 @@ namespace AMaungUs.FFUMaker.ViewModels
         }
         private void RunPowershellScripts()
         {
+            Task.Delay(1000);
             string file = prerequisites.AdkAddOnKitPath+ "\\Tools\\LaunchShell.ps1";
             Directory.CreateDirectory(WorkspacePath + "\\" + WorkspaceName);
             FileInfo fInfo = new FileInfo(file);
@@ -143,7 +151,6 @@ namespace AMaungUs.FFUMaker.ViewModels
             Process p = new Process();
             ProcessStartInfo psi = new ProcessStartInfo();
             psi.FileName = @"C:\windows\system32\windowspowershell\v1.0\powershell.exe ";
-            //psi.Arguments = @" -noexit -ExecutionPolicy Bypass -Command C:\Dev\OpenSource\iot-adk-addonkit\Tools\Launchshell.ps1 -Verb runAs";
             psi.Arguments = @" -noexit -ExecutionPolicy Bypass -Command " + newFilePath + " -Verb runAs";
             psi.RedirectStandardInput = true;
             psi.RedirectStandardOutput = true;
@@ -151,8 +158,8 @@ namespace AMaungUs.FFUMaker.ViewModels
             psi.CreateNoWindow = true;
             p.StartInfo = psi;
             p.Start();
-            p.WaitForExit(20000);
             p.StandardInput.WriteLine("exit");
+            p.WaitForExit();
             File.Delete(newFilePath);
         }
         public string GetCommandForSelectedBoard()
@@ -172,7 +179,7 @@ namespace AMaungUs.FFUMaker.ViewModels
             if (SelectedManufacturer.MoveUp1Directory)
                 Location = Path.GetDirectoryName(Location);
             command = SelectedManufacturer.PSImportCmd.Replace("<BSPName>", bspName).Replace("<Path>", Location);
-            command += command.Replace("<ExtractedPath>", extractedPath);
+            command = command.Replace("<ExtractedPath>", extractedPath);
             var commands = "\n" + "$newCmd = '" + command + "'" + "\n";
             commands += "invoke-expression  $newCmd";
             commands += "\n" + "$bldCmd = '" + SelectedManufacturer.BuildCmd.Replace("<BSPName>", bspName) + "'" + "\n";
