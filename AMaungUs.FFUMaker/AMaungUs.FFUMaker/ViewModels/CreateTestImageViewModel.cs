@@ -71,7 +71,7 @@ namespace AMaungUs.FFUMaker.ViewModels
 
         private void BkgWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            this.Create(null, new EventArgs());
+            //this.Create(null, new EventArgs());
         }
 
         private void BkgWorker_DoWork(object sender, DoWorkEventArgs e)
