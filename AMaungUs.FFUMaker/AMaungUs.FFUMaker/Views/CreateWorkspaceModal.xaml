@@ -9,7 +9,7 @@
         xmlns:this2that="clr-namespace:AMaungUs.FFUMaker.Converters"
         mc:Ignorable="d"
         Background="Black"
-        Title="AMaungUs: FFUMaker - Create a new workspace" Height="440" Width="480" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None">
+        Title="" Height="440" Width="480" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None">
     <Window.DataContext>
         <vm:CreateWorkspaceViewModel/>
     </Window.DataContext>
@@ -50,21 +50,21 @@
         <TextBlock Text="Create a new workspace" x:Name="TabWorkSpace" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" />
         <ProgressBar Foreground="SkyBlue" Height="4" IsIndeterminate="True" Visibility="{Binding ExecutingPowershell, Converter={StaticResource BoolToVisibility}}" Margin="0,12,0,0"></ProgressBar>
         <TextBlock Text="Workspace Name" Foreground="White" FontFamily="Segoe UI Light" Margin="0,8,0,0"/>
-        <TextBox Style="{StaticResource placeHolder}" Tag="Workspace Name" Text="{Binding WorkspaceName}" Height="24"/>
+        <TextBox Style="{StaticResource placeHolder}" Tag="Workspace Name" Text="{Binding WorkspaceName}" Height="24" IsEnabled="{Binding EditingEnabled}"/>
         <TextBlock Text="OEM Name" Foreground="White" FontFamily="Segoe UI Light"  Margin="0,8,0,0"/>
-        <TextBox Style="{StaticResource placeHolder}" Tag="OEM Name" Height="24" Text="{Binding OEMName}"/>
+        <TextBox Style="{StaticResource placeHolder}" Tag="OEM Name" Height="24" Text="{Binding OEMName}" IsEnabled="{Binding EditingEnabled}"/>
         <TextBlock Text="Architecture" Foreground="White" FontFamily="Segoe UI Light"  Margin="0,8,0,0"/>
-        <ComboBox Width="200" Height="24" FontSize="14" HorizontalAlignment="Left" SelectedValue="{Binding Architecture}" ItemsSource="{Binding ArchitectureList}">
+        <ComboBox Width="200" Height="24" FontSize="14" HorizontalAlignment="Left" SelectedValue="{Binding Architecture}" ItemsSource="{Binding ArchitectureList}" IsEnabled="{Binding EditingEnabled}">
         </ComboBox>
         <TextBlock Text="Workspace Path" Foreground="White" FontFamily="Segoe UI Light"  Margin="0,8,0,0"/>
-        <TextBox Style="{StaticResource placeHolder}" Tag="Location Path" Text="{Binding WorkspacePath}" Height="24"/>
+        <TextBox Style="{StaticResource placeHolder}" Tag="Location Path" Text="{Binding WorkspacePath}" Height="24" IsEnabled="{Binding EditingEnabled}"/>
         <Rectangle Fill="Transparent" Height="23" Margin="0,-23,0,0">
             <Rectangle.InputBindings>
                 <MouseBinding Command="{Binding PathSelectionCommand}" MouseAction="LeftClick" />
             </Rectangle.InputBindings>
         </Rectangle>
         <TextBlock Text="Manufacturer" Foreground="White" FontFamily="Segoe UI Light"  Margin="0,8,0,0"/>
-        <ComboBox ItemsSource="{Binding BSPManufacturerDefinitions}" SelectedItem="{Binding SelectedManufacturer}">
+        <ComboBox ItemsSource="{Binding BSPManufacturerDefinitions}" SelectedItem="{Binding SelectedManufacturer}" IsEnabled="{Binding EditingEnabled}">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal" Background="Transparent" >
@@ -75,8 +75,8 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        <TextBlock Text="BSP Path" Foreground="White" FontFamily="Segoe UI Light"  Margin="0,8,0,0"/>
-        <TextBox Style="{StaticResource placeHolder}" Tag="Location Path" Text="{Binding Location}" Height="24"/>
+        <TextBlock Text="BSP Path" Foreground="White" FontFamily="Segoe UI Light"  Margin="0,8,0,0" />
+        <TextBox Style="{StaticResource placeHolder}" Tag="Location Path" Text="{Binding Location}" Height="24" IsEnabled="{Binding EditingEnabled}"/>
         <Rectangle Fill="Transparent" Height="23" Margin="0,-23,0,0">
             <Rectangle.InputBindings>
                 <MouseBinding Command="{Binding BSPPathSelectionCommand}" MouseAction="LeftClick" />

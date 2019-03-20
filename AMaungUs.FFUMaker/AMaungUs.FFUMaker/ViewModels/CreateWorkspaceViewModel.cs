@@ -97,6 +97,12 @@ namespace AMaungUs.FFUMaker.ViewModels
             get { return executingPowershell; }
             set { SetProperty(ref executingPowershell, value); }
         }
+        bool editingEnabled = true;
+        public bool EditingEnabled
+        {
+            get { return editingEnabled; }
+            set { SetProperty(ref editingEnabled, value); }
+        }
         public event EventHandler Create;
         BackgroundWorker bkgWorker;
         public CreateWorkspaceViewModel()
@@ -138,6 +144,7 @@ namespace AMaungUs.FFUMaker.ViewModels
             {
 
                 ExecutingPowershell = true;
+                EditingEnabled = false;
                 bkgWorker.RunWorkerAsync();
                 
             }
@@ -147,18 +154,19 @@ namespace AMaungUs.FFUMaker.ViewModels
             }
         }
         public bool IsDisabled { get; set; }
-            private void BkgWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-            {
-                    this.Create(null, new EventArgs());
-            }
+        private void BkgWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            EditingEnabled = true;
+            this.Create(null, new EventArgs());
+        }
 
-            private void BkgWorker_DoWork(object sender, DoWorkEventArgs e)
-            {
-                RunPowershellScripts();
-                e.Cancel = true;
-            }
+        private void BkgWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            RunPowershellScripts();
+            e.Cancel = true;
+        }
 
-            private bool ValidateWorkspace()
+        private bool ValidateWorkspace()
         {
             if (string.IsNullOrEmpty(WorkspaceName) || string.IsNullOrEmpty(OEMName) || string.IsNullOrEmpty(Architecture) || string.IsNullOrEmpty(WorkspacePath))
                 return false;
