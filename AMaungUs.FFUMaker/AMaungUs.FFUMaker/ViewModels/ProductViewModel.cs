@@ -35,6 +35,13 @@ namespace AMaungUs.FFUMaker.ViewModels
                 OnPropertyChanged("Title");
             }
         }
+
+        private Product selectedProduct;
+        public Product SelectedProduct
+        {
+            get { return selectedProduct == null ? new Product(): selectedProduct; }
+            set { SetProperty(ref selectedProduct, value); }
+        }
         private ObservableCollection<Product> products;
         public ObservableCollection<Product> Products
         {
@@ -72,9 +79,6 @@ namespace AMaungUs.FFUMaker.ViewModels
             if (dialogresult.Value == true)
             {
                 LoadProducts();
-                //var workspace = ((CreateWorkspaceViewModel)createModal.DataContext).workspace;
-                //Workspaces.Add(workspace);
-                //SaveWorkspaces();
             }
         }
         System.Windows.Input.ICommand deleteproductcommand;
