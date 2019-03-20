@@ -146,7 +146,7 @@ namespace AMaungUs.FFUMaker.ViewModels
             psi.RedirectStandardInput = true;
             psi.RedirectStandardOutput = true;
             psi.UseShellExecute = false;
-            psi.CreateNoWindow = false;
+            psi.CreateNoWindow = true;
             p.StartInfo = psi;
             p.Start();
             p.StandardInput.WriteLine(OEMName);
@@ -155,7 +155,7 @@ namespace AMaungUs.FFUMaker.ViewModels
             p.StandardInput.WriteLine(Manufacturer);
             p.StandardInput.WriteLine(BaseBoardProduct);
             p.StandardInput.WriteLine("Exit");
-           // p.wait();
+            p.WaitForExit();
             File.Delete(newFilePath);
         }
     }
