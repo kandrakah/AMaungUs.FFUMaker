@@ -1,5 +1,4 @@
 ﻿using AMaungUs.FFUMaker.Models;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,10 +11,10 @@ using System.Windows.Input;
 
 namespace AMaungUs.FFUMaker.ViewModels
 {
-    public class CreateProductViewModel : BaseViewModel
+    public class CreateTestImageViewModel : BaseViewModel
     {
         PrerequisiteViewModel prerequisites;
-        
+
         public Workspace ws;
 
         string productName;
@@ -24,38 +23,11 @@ namespace AMaungUs.FFUMaker.ViewModels
             get { return productName; }
             set { SetProperty(ref productName, value); }
         }
-
-
-        string sku;
-        public string SKU
+        string log;
+        public string Log
         {
-            get { return sku; }
-            set { SetProperty(ref sku, value); }
-        }
-
-        string oemName;
-        public string OEMName
-        {
-            get { return oemName; }
-            set { SetProperty(ref oemName, value); }
-        }
-        string family;
-        public string Family
-        {
-            get { return family; }
-            set { SetProperty(ref family, value); }
-        }
-        string manufacturer;
-        public string Manufacturer
-        {
-            get { return manufacturer; }
-            set { SetProperty(ref manufacturer, value); }
-        }
-        string bbProduct;
-        public string BaseBoardProduct
-        {
-            get { return bbProduct; }
-            set { SetProperty(ref bbProduct, value); }
+            get { return log; }
+            set { SetProperty(ref log, value); }
         }
 
         bool executingPowershell = false;
@@ -64,10 +36,9 @@ namespace AMaungUs.FFUMaker.ViewModels
             get { return executingPowershell; }
             set { SetProperty(ref executingPowershell, value); }
         }
-
         BackgroundWorker bkgWorker;
         public event EventHandler Create;
-        public CreateProductViewModel()
+        public CreateTestImageViewModel()
         {
             ws = new Workspace();
             prerequisites = new PrerequisiteViewModel();
@@ -90,12 +61,12 @@ namespace AMaungUs.FFUMaker.ViewModels
         private void CreateCommandExec(object parm)
         {
             var validateResult = ValidateWorkspace();
-            if (validateResult && !bkgWorker.IsBusy) 
+            if (validateResult && !bkgWorker.IsBusy)
             {
                 ExecutingPowershell = true;
                 bkgWorker.RunWorkerAsync();
             }
-                
+
         }
 
         private void BkgWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -110,7 +81,7 @@ namespace AMaungUs.FFUMaker.ViewModels
         }
         private bool ValidateWorkspace()
         {
-            if (string.IsNullOrEmpty(ProductName)  ||string.IsNullOrEmpty(OEMName) || string.IsNullOrEmpty(Family) || string.IsNullOrEmpty(SKU) || string.IsNullOrEmpty(Manufacturer) || string.IsNullOrEmpty(BaseBoardProduct))
+            if (string.IsNullOrEmpty(ProductName))
                 return false;
             else
             {
@@ -121,7 +92,7 @@ namespace AMaungUs.FFUMaker.ViewModels
         {
             Task.Delay(1000);
             string file = prerequisites.AdkAddOnKitPath + "\\Tools\\LaunchShell.ps1";
-       
+
             FileInfo fInfo = new FileInfo(file);
             var f = fInfo.DirectoryName;
             string newFilePath = f + @"\LaunchshellMod.ps1";
@@ -132,8 +103,8 @@ namespace AMaungUs.FFUMaker.ViewModels
             }
             commands += "\n" + "$openworkspacecmd = 'open-ws " + ws.Path + "\\" + ws.Name + "'";
             commands += "\ninvoke-expression  $openworkspacecmd";
-            commands += "\n" + "$newCmd = 'Add-IoTProduct " + ProductName +" "+ ws.BSPName+"'";
-            commands += "\ninvoke-expression  $newCmd";
+            commands += "\n" + "$createTestImgCmd = 'New-IoTFFUImage " + ProductName + " Test'";
+            commands += "\ninvoke-expression  $createTestImgCmd";
             using (StreamWriter sw = new StreamWriter(newFilePath))
             {
                 sw.WriteLine(commands);
@@ -148,11 +119,6 @@ namespace AMaungUs.FFUMaker.ViewModels
             psi.CreateNoWindow = true;
             p.StartInfo = psi;
             p.Start();
-            p.StandardInput.WriteLine(OEMName);
-            p.StandardInput.WriteLine(Family);
-            p.StandardInput.WriteLine(SKU);
-            p.StandardInput.WriteLine(Manufacturer);
-            p.StandardInput.WriteLine(BaseBoardProduct);
             p.StandardInput.WriteLine("Exit");
             p.WaitForExit();
             File.Delete(newFilePath);

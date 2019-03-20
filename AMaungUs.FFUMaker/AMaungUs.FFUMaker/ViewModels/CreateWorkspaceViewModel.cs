@@ -179,7 +179,6 @@ namespace AMaungUs.FFUMaker.ViewModels
             string commands = string.Empty;
             using (StreamReader sr = new StreamReader(file))
             {
-                // and plunk the contents in the textbox
                 commands = sr.ReadToEnd();
             }
             commands += "\n" + "$newCmd = 'new-ws " + WorkspacePath + "\\" + WorkspaceName + " " + OEMName + " " + Architecture +"'" + "\n";
@@ -228,8 +227,6 @@ namespace AMaungUs.FFUMaker.ViewModels
             commands += "\n" + "$bldPkgAllCmd = 'New-IoTCabPackage All'" + "\n";
             commands += "invoke-expression  $bldPkgAllCmd";
             workspace.BSPName = SelectedManufacturer.BSPName;
-            //commands += "\n" + "$addCmd = 'Add-IoTProduct ProductA " + bspName + "'" + "\n";
-            //commands += "invoke-expression  $addCmd";
             return commands;
         }
         System.Windows.Input.ICommand pathSelectionCommand;
@@ -261,7 +258,7 @@ namespace AMaungUs.FFUMaker.ViewModels
         public ICommand BSPPathSelectionCommand
         {
             get { return bsppathSelectionCommand == null ? new DelegateCommand<object>(this.BSPPathSelectionCommandExec, x => true) : bsppathSelectionCommand; }
-            set { SetProperty(ref pathSelectionCommand, value); }
+            set { SetProperty(ref bsppathSelectionCommand, value); }
         }
         private void BSPPathSelectionCommandExec(object parm)
         {

@@ -81,7 +81,7 @@
                     <TextBlock Text="" FontSize="18" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
                     <TextBlock Text="Create Test Image From Selected Product" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
                     <StackPanel.InputBindings>
-                        <MouseBinding Command="{Binding NextCommand}" MouseAction="LeftClick" />
+                        <MouseBinding Command="{Binding CreateTestImageCommand}" MouseAction="LeftClick" />
                     </StackPanel.InputBindings>
                 </StackPanel>
             </StackPanel>

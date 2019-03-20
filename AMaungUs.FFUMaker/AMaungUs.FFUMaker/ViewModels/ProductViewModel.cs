@@ -97,6 +97,26 @@ namespace AMaungUs.FFUMaker.ViewModels
             get { return deleteproductcommand == null ? new DelegateCommand<object>(this.DelProductCommandExec, x => true) : deleteproductcommand; }
             set { SetProperty(ref deleteproductcommand, value); }
         }
+        System.Windows.Input.ICommand createtestimagecommand;
+        public ICommand CreateTestImageCommand
+        {
+            get { return createtestimagecommand == null ? new DelegateCommand<object>(this.CreateTestImageCommandExec, x => true) : createtestimagecommand; }
+            set { SetProperty(ref createtestimagecommand, value); }
+        }
+        private void CreateTestImageCommandExec(object parm)
+        {
+            if (SelectedProduct != null)
+            {
+                CreateTestImageModal createModal = new CreateTestImageModal();
+                ((CreateTestImageViewModel)createModal.DataContext).ws = SelectedWorkspace;
+                ((CreateTestImageViewModel)createModal.DataContext).ProductName = SelectedProduct.ProductName;
+                Nullable<bool> dialogresult = createModal.ShowDialog();
+                if (dialogresult.Value == true)
+                {
+                    LoadProducts();
+                }
+            }
+        }
         private void DelProductCommandExec(object parm)
         {
             if (parm is Product)

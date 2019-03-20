@@ -64,7 +64,7 @@ namespace AMaungUs.FFUMaker
 
         private void GridTestImage_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            CreateTestImagePage pageToDisplay = new CreateTestImagePage();
+            CreateTestImageModal pageToDisplay = new CreateTestImageModal();
             MainDisplay.Children.Clear();
             MainDisplay.Children.Add(pageToDisplay);
         }

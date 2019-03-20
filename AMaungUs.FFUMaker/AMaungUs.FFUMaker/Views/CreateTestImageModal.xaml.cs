@@ -18,9 +18,9 @@ namespace AMaungUs.FFUMaker.Views
     /// <summary>
     /// Interaction logic for CreateTestImagePage.xaml
     /// </summary>
-    public partial class CreateTestImagePage : UserControl
+    public partial class CreateTestImageModal
     {
-        public CreateTestImagePage()
+        public CreateTestImageModal()
         {
             InitializeComponent();
         }
