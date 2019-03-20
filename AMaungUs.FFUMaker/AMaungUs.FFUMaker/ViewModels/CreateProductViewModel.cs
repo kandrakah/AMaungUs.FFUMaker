@@ -64,6 +64,13 @@ namespace AMaungUs.FFUMaker.ViewModels
             get { return executingPowershell; }
             set { SetProperty(ref executingPowershell, value); }
         }
+        bool editingEnabled = true;
+        public bool EditingEnabled
+        {
+            get { return editingEnabled; }
+            set { SetProperty(ref editingEnabled, value); }
+        }
+        public bool IsDisabled { get; set; }
 
         BackgroundWorker bkgWorker;
         public event EventHandler Create;
@@ -90,12 +97,16 @@ namespace AMaungUs.FFUMaker.ViewModels
         private void CreateCommandExec(object parm)
         {
             var validateResult = ValidateWorkspace();
-            if (validateResult && !bkgWorker.IsBusy) 
+            if (validateResult && !bkgWorker.IsBusy)
             {
                 ExecutingPowershell = true;
+                EditingEnabled = false;
                 bkgWorker.RunWorkerAsync();
             }
-                
+            if (bkgWorker.IsBusy)
+            {
+                IsDisabled = true;
+            }
         }
 
         private void BkgWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)

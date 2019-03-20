@@ -53,24 +53,24 @@
 
             <TextBlock Text="Create Product" x:Name="TabSMBios" FontSize="32" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" />
             <TextBlock Text="A new product requires SMBIOS information" FontSize="14" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center"/>
-            <TextBlock Text="Product Name"  FontSize="10" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="0,12,0,4"/>
+            <TextBlock Text="Product Name"  FontSize="10" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="0,12,0,4" IsEnabled="{Binding EditingEnabled}"/>
             <TextBox Style="{StaticResource placeHolder}" Tag="Product Name" Text="{Binding ProductName}" Height="24"/>
 
             <TextBlock Text="System OEM Name"  FontSize="10" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="0,12,0,4"/>
-            <TextBox Style="{StaticResource placeHolder}" Tag="Contoso Systems" Text="{Binding OEMName}" Height="24"/>
+            <TextBox Style="{StaticResource placeHolder}" Tag="Contoso Systems" Text="{Binding OEMName}" Height="24" IsEnabled="{Binding EditingEnabled}"/>
 
             <TextBlock Text="Family Name"  FontSize="10" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="0,8,0,4"/>
-            <TextBox Style="{StaticResource placeHolder}" Tag="Device Family" Text="{Binding Family}" Height="24"/>
+            <TextBox Style="{StaticResource placeHolder}" Tag="Device Family" Text="{Binding Family}" Height="24" IsEnabled="{Binding EditingEnabled}"/>
 
 
             <TextBlock Text="SKU"  FontSize="10" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="0,8,0,4"/>
-            <TextBox Style="{StaticResource placeHolder}" Tag="Device SKU" Text="{Binding SKU}" Height="24"/>
+            <TextBox Style="{StaticResource placeHolder}" Tag="Device SKU" Text="{Binding SKU}" Height="24" IsEnabled="{Binding EditingEnabled}"/>
 
             <TextBlock Text="Manufacturer"  FontSize="10" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="0,8,0,4"/>
-            <TextBox Style="{StaticResource placeHolder}" Tag="Baseboard Manufacturer" Text="{Binding Manufacturer}" Height="24"/>
+            <TextBox Style="{StaticResource placeHolder}" Tag="Baseboard Manufacturer" Text="{Binding Manufacturer}" Height="24" IsEnabled="{Binding EditingEnabled}"/>
 
             <TextBlock Text="Baseboard Product"  FontSize="10" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="0,8,0,4"/>
-            <TextBox Style="{StaticResource placeHolder}" Tag="Baseboard Product" Text="{Binding BaseBoardProduct}" Height="24"/>
+            <TextBox Style="{StaticResource placeHolder}" Tag="Baseboard Product" Text="{Binding BaseBoardProduct}" Height="24" IsEnabled="{Binding EditingEnabled}"/>
 
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">
