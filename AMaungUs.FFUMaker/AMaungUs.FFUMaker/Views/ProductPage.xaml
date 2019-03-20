@@ -77,8 +77,8 @@
                 </Grid>
                 <TextBlock FontWeight="ExtraLight" Margin="24,20,0,0" Text="" TextWrapping="Wrap" FontSize="18" Foreground="White" FontFamily="Segoe UL Light" VerticalAlignment="Center" />
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="20">
-                    <TextBlock Text="" FontSize="18" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
-                    <TextBlock Text="Open Selected product" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                    <TextBlock Text="" FontSize="18" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                    <TextBlock Text="Create Test Image" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
                     <StackPanel.InputBindings>
                         <MouseBinding Command="{Binding NextCommand}" MouseAction="LeftClick" />
                     </StackPanel.InputBindings>
