@@ -13,6 +13,8 @@ namespace AMaungUs.FFUMaker.Models
         {
             get
             {
+                if (string.IsNullOrEmpty(Path))
+                    return "";
                 var locationArray = Path.Split('\\');
                 var folderName = locationArray.LastOrDefault();
                 return folderName;
