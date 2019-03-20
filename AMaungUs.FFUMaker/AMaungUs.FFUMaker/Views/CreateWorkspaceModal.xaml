@@ -9,7 +9,7 @@
         xmlns:this2that="clr-namespace:AMaungUs.FFUMaker.Converters"
         mc:Ignorable="d"
         Background="Black"
-        Title="AMaungUs: FFUMaker - Create a new workspace" Height="500" Width="480">
+        Title="AMaungUs: FFUMaker - Create a new workspace" Height="500" Width="480" WindowStartupLocation="CenterOwner" ShowInTaskbar="False">
     <Window.DataContext>
         <vm:CreateWorkspaceViewModel/>
     </Window.DataContext>
@@ -48,7 +48,7 @@
     </Window.Resources>
     <StackPanel Margin="24">
         <TextBlock Text="Create a new workspace" x:Name="TabWorkSpace" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" />
-        <ProgressBar Foreground="White" IsIndeterminate="True" Visibility="{Binding ExecutingPowershell, Converter={StaticResource BoolToVisibility}}"></ProgressBar>
+        <ProgressBar Foreground="White" Height="4" IsIndeterminate="True" Visibility="{Binding ExecutingPowershell, Converter={StaticResource BoolToVisibility}}"></ProgressBar>
         <TextBlock Text="Workspace Name" Foreground="White" FontFamily="Segoe UI Light" Margin="0,8,0,0"/>
         <TextBox Style="{StaticResource placeHolder}" Tag="Workspace Name" Text="{Binding WorkspaceName}" Height="24"/>
         <TextBlock Text="OEM Name" Foreground="White" FontFamily="Segoe UI Light"  Margin="0,8,0,0"/>
