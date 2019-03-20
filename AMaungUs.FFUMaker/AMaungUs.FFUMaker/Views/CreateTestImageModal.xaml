@@ -44,15 +44,15 @@
         </Style>
 
     </Window.Resources>
-    <Window.DataContext>
+    <!--<Window.DataContext>
         <vm:CreateTestImageViewModel/>
-    </Window.DataContext>
+    </Window.DataContext>-->
     <Grid>
         <StackPanel Margin="24,0,24,0">
             <TextBlock Text="Create a Test Image"  FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" />
             <TextBlock Text="Image Creation Log" Foreground="White" FontFamily="Segoe UI Light" Margin="0,8,0,0"/>
             <TextBox Margin="20,2,20,0" Text="{Binding Log}" Height="240" AcceptsReturn="True" TextWrapping="Wrap"/>
-            <ProgressBar  Margin="20,0,20,0" Height="4" Foreground="LightBlue" IsIndeterminate="true" />
+            <ProgressBar  Margin="20,0,20,0" Height="4" Background="Black" Foreground="Red" IsIndeterminate="true" Visibility="{Binding ExecutingPowershell, Converter={StaticResource BoolToVisibility}}" />
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
                 <TextBlock Text="" FontSize="24" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
