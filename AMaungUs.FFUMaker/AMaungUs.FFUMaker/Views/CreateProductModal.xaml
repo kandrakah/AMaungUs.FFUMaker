@@ -9,7 +9,7 @@
         xmlns:this2that="clr-namespace:AMaungUs.FFUMaker.Converters"
         mc:Ignorable="d"
         Background="Black"
-        Title="" Height="460" Width="480" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None">
+        Title="" Height="470" Width="480" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None">
     <Window.DataContext>
         <vm:CreateProductViewModel/>
     </Window.DataContext>
@@ -47,8 +47,7 @@
 
     </Window.Resources>
     <Grid>
-        <ProgressBar HorizontalAlignment="Center" VerticalAlignment="Bottom" Background="Black" Foreground="SkyBlue" Height="4" IsIndeterminate="True" Visibility="{Binding ExecutingPowershell, Converter={StaticResource BoolToVisibility}}" Margin="0,12,0,0"></ProgressBar>
-
+        
         <StackPanel x:Name="spSMBios" Visibility="Visible" Margin="24,0,20,0" Grid.ColumnSpan="2">
 
             <TextBlock Text="Create Product" x:Name="TabSMBios" FontSize="32" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" />
@@ -71,6 +70,7 @@
 
             <TextBlock Text="Baseboard Product"  FontSize="10" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="0,8,0,4"/>
             <TextBox Style="{StaticResource placeHolder}" Tag="Baseboard Product" Text="{Binding BaseBoardProduct}" Height="24" IsEnabled="{Binding EditingEnabled}"/>
+            <ProgressBar HorizontalAlignment="Center" VerticalAlignment="Bottom" Background="Black" Foreground="SkyBlue" Height="2" Width="480" BorderThickness="0" IsIndeterminate="True" Visibility="{Binding ExecutingPowershell, Converter={StaticResource BoolToVisibility}}" Margin="0,12,0,0"></ProgressBar>
 
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">

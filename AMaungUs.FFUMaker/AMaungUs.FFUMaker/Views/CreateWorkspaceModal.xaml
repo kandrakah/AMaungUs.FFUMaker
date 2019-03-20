@@ -47,7 +47,6 @@
 
     </Window.Resources>
     <Grid>
-        <ProgressBar HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="SkyBlue" Background="Black" Height="4" IsIndeterminate="True" Visibility="{Binding ExecutingPowershell, Converter={StaticResource BoolToVisibility}}" Margin="0,12,0,0"></ProgressBar>
         <StackPanel Margin="24,0,20,0">
             <TextBlock Text="Create a new workspace" x:Name="TabWorkSpace" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" />
             <TextBlock Text="Workspace Name" Foreground="White" FontFamily="Segoe UI Light" Margin="0,8,0,0"/>
@@ -83,6 +82,8 @@
                     <MouseBinding Command="{Binding BSPPathSelectionCommand}" MouseAction="LeftClick" />
                 </Rectangle.InputBindings>
             </Rectangle>
+            <ProgressBar HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="SkyBlue" Background="Black" Height="2" Width="480" BorderThickness="0" IsIndeterminate="True" Visibility="{Binding ExecutingPowershell, Converter={StaticResource BoolToVisibility}}" Margin="0,12,0,0"></ProgressBar>
+
             <Grid>
                 <!--<StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,20,0,0">
                 <TextBlock Text="" FontSize="24" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
