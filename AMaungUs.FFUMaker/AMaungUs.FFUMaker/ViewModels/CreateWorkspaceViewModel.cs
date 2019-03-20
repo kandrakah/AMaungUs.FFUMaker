@@ -142,13 +142,13 @@ namespace AMaungUs.FFUMaker.ViewModels
             var validateResult = ValidateWorkspace();
             if (validateResult && !bkgWorker.IsBusy)
             {
+                ExecutingPowershell = true;
                 EditingEnabled = false;
                 bkgWorker.RunWorkerAsync();
                 
             }
             if(bkgWorker.IsBusy)
             {
-                ExecutingPowershell = true;
                 IsDisabled = true;
             }
         }
