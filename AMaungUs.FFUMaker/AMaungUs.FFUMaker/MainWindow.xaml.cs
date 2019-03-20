@@ -39,6 +39,7 @@ namespace AMaungUs.FFUMaker
         {
             WorkspacePage pageToDisplay = new WorkspacePage();
             pageToDisplay.DataContext = ((MainWindowViewModel)this.DataContext).WorkspaceVM;
+            ((MainWindowViewModel)this.DataContext).WorkspaceVM.SelectedWorkspace = null;
             MainDisplay.Children.Clear();
             MainDisplay.Children.Add(pageToDisplay);
         }
@@ -49,9 +50,8 @@ namespace AMaungUs.FFUMaker
         }
         private void DisplaySelectedWorkspace()
         {
-
             ProductPage pageToDisplay = new ProductPage();
-            ((ProductViewModel)pageToDisplay.DataContext).SelectedWorkspace = ((MainWindowViewModel)this.DataContext).WorkspaceVM.SelectedWorkspace;
+            pageToDisplay.DataContext = new ProductViewModel(((MainWindowViewModel)this.DataContext).WorkspaceVM.SelectedWorkspace);
             MainDisplay.Children.Clear();
             MainDisplay.Children.Add(pageToDisplay);
         }

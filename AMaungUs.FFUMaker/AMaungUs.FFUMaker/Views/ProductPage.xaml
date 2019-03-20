@@ -7,9 +7,9 @@
              xmlns:vm="clr-namespace:AMaungUs.FFUMaker.ViewModels"
              mc:Ignorable="d"
              d:DesignHeight="720" d:DesignWidth="1200">
-    <UserControl.DataContext>
+    <!--<UserControl.DataContext>
         <vm:ProductViewModel/>
-    </UserControl.DataContext>
+    </UserControl.DataContext>-->
     <Grid>
         
         <StackPanel Margin="48">
@@ -18,7 +18,7 @@
                 <TextBlock Text="Select an existing product or create a new product" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="22,0,0,0"/>
             </StackPanel>
             <StackPanel>
-                <ItemsControl x:Name="WrapPanelControl" ItemsSource="{Binding Workspaces}" Height="320" Margin="0,20,0,0">
+                <ItemsControl x:Name="WrapPanelControl" ItemsSource="{Binding Products}" Height="320" Margin="0,20,0,0">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <Grid Height="80" Width="360" Background="#222" Margin="4">
@@ -41,11 +41,10 @@
                                     <TextBlock Text="{Binding ProductName}" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" />
                                 </Viewbox>
                                 <TextBlock Grid.Column="0" Grid.Row="1" Text="" FontSize="18" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,4,4,4"/>
-                                <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding ProductSKU}" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,4,4,4"/>
-                                
+                                <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding Path}" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,4,4,4"/>
                                 <TextBlock Grid.Column="4" Grid.Row="0" Grid.RowSpan="3" Text="" FontSize="18" Foreground="White" Background="Transparent" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,4,4,4">
                                     <TextBlock.InputBindings>
-                                        <MouseBinding Command="{Binding ElementName=WrapPanelControl, Path=DataContext.DelWorkSpaceCommand}" CommandParameter="{Binding .}" MouseAction="LeftClick" />
+                                        <MouseBinding Command="{Binding ElementName=WrapPanelControl, Path=DataContext.DeleteProductCommand}" CommandParameter="{Binding .}" MouseAction="LeftClick" />
                                     </TextBlock.InputBindings>
                                 </TextBlock>
                             </Grid>

@@ -78,6 +78,7 @@
     <Compile Include="Models\BSP.cs" />
     <Compile Include="Models\BSPManufacturerInfo.cs" />
     <Compile Include="Models\Prerequisite.cs" />
+    <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Workspace.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\CreateWorkspaceViewModel.cs" />

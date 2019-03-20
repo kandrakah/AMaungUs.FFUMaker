@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,8 +35,15 @@ namespace AMaungUs.FFUMaker.ViewModels
                 OnPropertyChanged("Title");
             }
         }
-        public ProductViewModel()
+        private ObservableCollection<Product> products;
+        public ObservableCollection<Product> Products
         {
+            get { return products == null ? new ObservableCollection<Product>() : products; }
+            set { SetProperty(ref products, value); }
+        }
+        public ProductViewModel(Workspace workspace)
+        {
+            SelectedWorkspace = workspace;
             var savedjson = Properties.Settings.Default.Workspaces;
             var _workspaces = JsonConvert.DeserializeObject<ObservableCollection<Workspace>>(savedjson);
             workspaces = _workspaces;
@@ -43,7 +51,12 @@ namespace AMaungUs.FFUMaker.ViewModels
         }
         private void LoadProducts()
         {
-
+            var productsPath = SelectedWorkspace.Path + "\\" + SelectedWorkspace.Name + "\\Source-Arm\\Products";
+            if (Directory.Exists(productsPath))
+            {
+                DirectoryInfo directoryInfo = new DirectoryInfo(productsPath);
+                Products = new ObservableCollection<Product>(directoryInfo.GetDirectories().Select(p => new Product() { Path = p.FullName }));
+            }
         }
         System.Windows.Input.ICommand createproductcommand;
         public ICommand CreateProductCommand
@@ -70,10 +83,24 @@ namespace AMaungUs.FFUMaker.ViewModels
         }
         private void DelProductCommandExec(object parm)
         {
-            if (parm is Workspace)
+            if (parm is Product)
             {
-                //var deleteObject = (Workspace)parm;
-                //DeleteWorkspace(deleteObject);
+                var product = (Product)parm;
+                if (Directory.Exists(product.Path))
+                {
+                    try
+                    {
+                        Directory.Delete(product.Path, true);
+                    }
+                    catch(Exception ex)
+                    {
+
+                    }
+                    finally
+                    {
+                        Products.Remove(product);
+                    }
+                }
             }
         }
     }

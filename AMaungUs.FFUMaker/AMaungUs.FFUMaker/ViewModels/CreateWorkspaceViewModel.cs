@@ -11,6 +11,7 @@ using System.Management.Automation.Runspaces;
 using System.IO;
 using System.Diagnostics;
 using Newtonsoft.Json;
+using System.Windows.Threading;
 
 namespace AMaungUs.FFUMaker.ViewModels
 {
@@ -112,7 +113,10 @@ namespace AMaungUs.FFUMaker.ViewModels
             var validateResult = ValidateWorkspace();
             if (validateResult)
             {
-                ExecutingPowershell = true;
+                Task.Factory.StartNew(() =>
+                {
+                    ExecutingPowershell = true;
+                });
                 RunPowershellScripts();
                 this.Create(parm, new EventArgs());
             }
