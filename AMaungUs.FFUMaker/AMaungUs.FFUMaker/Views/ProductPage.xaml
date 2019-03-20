@@ -24,6 +24,7 @@
                             <Grid Height="80" Width="360" Background="#222" Margin="4">
                                 <Grid.InputBindings>
                                     <MouseBinding Command="{Binding ElementName=WrapPanelControl, Path=DataContext.SelectCommand}" CommandParameter="{Binding .}" MouseAction="LeftClick" />
+                                    <MouseBinding Command="{Binding ElementName=WrapPanelControl, Path=DataContext.SelectCommand}" CommandParameter="{Binding .}" MouseAction="LeftDoubleClick" />
                                 </Grid.InputBindings>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="48"/>
@@ -60,7 +61,7 @@
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,40,0">
                             <TextBlock Text="Selected Product: " FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
-                            <TextBlock Text="{Binding SelectedProduct.Name}" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                            <TextBlock Text="{Binding SelectedProduct.ProductName}" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
                         </StackPanel>
                     </StackPanel>
                     <StackPanel  Orientation="Horizontal" HorizontalAlignment="Right" Margin="40,0,0,0">

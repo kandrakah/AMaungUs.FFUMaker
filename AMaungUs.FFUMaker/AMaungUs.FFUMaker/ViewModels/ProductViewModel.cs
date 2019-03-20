@@ -56,6 +56,16 @@ namespace AMaungUs.FFUMaker.ViewModels
             workspaces = _workspaces;
             LoadProducts();
         }
+        System.Windows.Input.ICommand selectCommand;
+        public ICommand SelectCommand
+        {
+            get { return selectCommand == null ? new DelegateCommand<object>(this.SelectCommandExec, x => true) : selectCommand; }
+            set { SetProperty(ref selectCommand, value); }
+        }
+        private void SelectCommandExec(object parm)
+        {
+            SelectedProduct = (Product)parm;
+        }
         private void LoadProducts()
         {
             var productsPath = SelectedWorkspace.Path + "\\" + SelectedWorkspace.Name + "\\Source-Arm\\Products";
