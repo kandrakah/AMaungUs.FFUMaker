@@ -9,7 +9,7 @@
         xmlns:this2that="clr-namespace:AMaungUs.FFUMaker.Converters"
         mc:Ignorable="d"
         Background="Black"
-        Title="AMaungUs: FFUMaker - Create a new product" Height="480" Width="480" WindowStartupLocation="CenterOwner" ShowInTaskbar="False">
+        Title="AMaungUs: FFUMaker - Create a new product" Height="460" Width="480" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None">
     <Window.DataContext>
         <vm:CreateProductViewModel/>
     </Window.DataContext>
@@ -47,7 +47,8 @@
 
     </Window.Resources>
     <Grid>
-        <StackPanel x:Name="spSMBios" Visibility="Visible" Grid.Column="1" Margin="24,12,24,24">
+       
+        <StackPanel x:Name="spSMBios" Visibility="Visible" Margin="24,0,20,0" Grid.ColumnSpan="2">
 
             <TextBlock Text="Create Product" x:Name="TabSMBios" FontSize="32" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" />
             <TextBlock Text="A new product requires SMBIOS information" FontSize="14" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center"/>
@@ -71,10 +72,10 @@
             <TextBlock Text="Baseboard Product"  FontSize="10" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="0,8,0,4"/>
             <TextBox Style="{StaticResource placeHolder}" Tag="Baseboard Product" Text="{Binding BaseBoardProduct}" Height="24"/>
 
-            
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,8,0,0">
-                <TextBlock Text="" FontSize="24" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
-                <TextBlock Text="Create" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">
+                <TextBlock Text="" FontSize="24" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                <TextBlock Text="Create Product" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
                 <StackPanel.InputBindings>
                     <MouseBinding Command="{Binding CreateCommand}" MouseAction="LeftClick" />
                 </StackPanel.InputBindings>

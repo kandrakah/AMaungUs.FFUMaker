@@ -57,14 +57,24 @@
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
                 </ItemsControl>
-                <Grid Height="40"  Margin="0,40,0,0">
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,40,0">
-                            <TextBlock Text="Selected Product: " FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
-                            <TextBlock Text="{Binding SelectedProduct.ProductName}" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                <Grid Height="80"  Margin="0,40,0,0">
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Right" Margin="0,0,40,0">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,40,0">
+                                <TextBlock Text="Selected Product: " FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                                <TextBlock Text="{Binding SelectedProduct.ProductName}" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <TextBlock Text="" FontSize="24" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                            <TextBlock Text="Create Test Image" FontSize="24" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                            <StackPanel.InputBindings>
+                                <MouseBinding Command="{Binding CreateTestImageCommand}" MouseAction="LeftClick" />
+                            </StackPanel.InputBindings>
                         </StackPanel>
                     </StackPanel>
-                    <StackPanel  Orientation="Horizontal" HorizontalAlignment="Right" Margin="40,0,0,0">
+                    
+                    <StackPanel  Orientation="Horizontal" HorizontalAlignment="left">
 
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="40,0,0,0">
                             <TextBlock Text="" FontSize="24" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
@@ -76,14 +86,7 @@
                     </StackPanel>
 
                 </Grid>
-                <TextBlock FontWeight="ExtraLight" Margin="24,20,0,0" Text="" TextWrapping="Wrap" FontSize="18" Foreground="White" FontFamily="Segoe UL Light" VerticalAlignment="Center" />
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="20">
-                    <TextBlock Text="" FontSize="18" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
-                    <TextBlock Text="Create Test Image From Selected Product" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
-                    <StackPanel.InputBindings>
-                        <MouseBinding Command="{Binding CreateTestImageCommand}" MouseAction="LeftClick" />
-                    </StackPanel.InputBindings>
-                </StackPanel>
+                
             </StackPanel>
         </StackPanel>
     </Grid>

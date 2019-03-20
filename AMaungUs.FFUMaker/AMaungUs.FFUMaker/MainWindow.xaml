@@ -9,7 +9,7 @@
         xmlns:this2that="clr-namespace:AMaungUs.FFUMaker.Converters"
         mc:Ignorable="d"
         Icon="icon.ico"
-        Title="AMaungUs: FFUMaker" Height="720" Width="1280">
+        Title="AMaungUs: FFUMaker" Height="720" Width="1280" WindowStyle="None" WindowStartupLocation="CenterScreen">
     <Window.DataContext>
         <vm:MainWindowViewModel/>
     </Window.DataContext>
