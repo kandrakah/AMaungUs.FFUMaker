@@ -43,6 +43,7 @@ namespace AMaungUs.FFUMaker.ViewModels
             get { return oemName; }
             set { SetProperty(ref oemName, value); }
         }
+
         string architecture;
         public string Architecture
         {
@@ -195,6 +196,7 @@ namespace AMaungUs.FFUMaker.ViewModels
             commands += "invoke-expression  $bldCmd";
             commands += "\n" + "$bldPkgAllCmd = 'New-IoTCabPackage All'" + "\n";
             commands += "invoke-expression  $bldPkgAllCmd";
+            workspace.BSPName = SelectedManufacturer.BSPName;
             //commands += "\n" + "$addCmd = 'Add-IoTProduct ProductA " + bspName + "'" + "\n";
             //commands += "invoke-expression  $addCmd";
             return commands;

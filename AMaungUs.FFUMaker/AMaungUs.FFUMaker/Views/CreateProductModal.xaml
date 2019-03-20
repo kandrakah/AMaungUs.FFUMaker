@@ -5,11 +5,14 @@
         xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AMaungUs.FFUMaker.Views"
+        xmlns:vm="clr-namespace:AMaungUs.FFUMaker.ViewModels"
         xmlns:this2that="clr-namespace:AMaungUs.FFUMaker.Converters"
         mc:Ignorable="d"
         Background="Black"
         Title="AMaungUs: FFUMaker - Create a new product" Height="420" Width="480" WindowStartupLocation="CenterOwner" ShowInTaskbar="False">
-
+    <Window.DataContext>
+        <vm:CreateProductViewModel/>
+    </Window.DataContext>
     <Window.Resources>
         <this2that:BoolToVisibilityConverter x:Key="BoolToVisibility" />
         <Style x:Key="placeHolder" TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
@@ -44,32 +47,32 @@
 
     </Window.Resources>
     <Grid>
-        <StackPanel x:Name="spSMBios" Visibility="Visible" Grid.Column="1" Margin="24">
+        <StackPanel x:Name="spSMBios" Visibility="Visible" Grid.Column="1" Margin="24,12,24,24">
 
             <TextBlock Text="Create Product" x:Name="TabSMBios" FontSize="32" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" />
             <TextBlock Text="A new product requires SMBIOS information" FontSize="14" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center"/>
             <!--<ProgressBar Foreground="White" Height="4" IsIndeterminate="True" Visibility="{Binding ExecutingPowershell, Converter={StaticResource BoolToVisibility}}"></ProgressBar>-->
 
             <TextBlock Text="System OEM Name"  FontSize="10" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="0,12,0,4"/>
-            <TextBox Style="{StaticResource placeHolder}" Tag="Contoso Systems" Text="{Binding WorkspaceName}" Height="24"/>
+            <TextBox Style="{StaticResource placeHolder}" Tag="Contoso Systems" Text="{Binding OEMName}" Height="24"/>
 
             <TextBlock Text="Family Name"  FontSize="10" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="0,8,0,4"/>
-            <TextBox Style="{StaticResource placeHolder}" Tag="Device Family" Text="{Binding WorkspaceName}" Height="24"/>
+            <TextBox Style="{StaticResource placeHolder}" Tag="Device Family" Text="{Binding Family}" Height="24"/>
 
 
             <TextBlock Text="SKU"  FontSize="10" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="0,8,0,4"/>
-            <TextBox Style="{StaticResource placeHolder}" Tag="Device SKU" Text="{Binding WorkspaceName}" Height="24"/>
+            <TextBox Style="{StaticResource placeHolder}" Tag="Device SKU" Text="{Binding SKU}" Height="24"/>
 
             <TextBlock Text="Manufacturer"  FontSize="10" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="0,8,0,4"/>
-            <TextBox Style="{StaticResource placeHolder}" Tag="Baseboard Manufacturer" Text="{Binding WorkspaceName}" Height="24"/>
+            <TextBox Style="{StaticResource placeHolder}" Tag="Baseboard Manufacturer" Text="{Binding Manufacturer}" Height="24"/>
 
             <TextBlock Text="Baseboard Product"  FontSize="10" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="0,8,0,4"/>
-            <TextBox Style="{StaticResource placeHolder}" Tag="Baseboard Product" Text="{Binding WorkspaceName}" Height="24"/>
+            <TextBox Style="{StaticResource placeHolder}" Tag="Baseboard Product" Text="{Binding BaseBoardProduct}" Height="24"/>
 
             
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,8,0,0">
                 <TextBlock Text="" FontSize="24" Foreground="White" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center" Margin="12,0,0,0"/>
-                <TextBlock Text="Make my Day!" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                <TextBlock Text="Create" FontSize="18" Foreground="White" FontFamily="Segoe UI Light" VerticalAlignment="Center" Margin="12,0,0,0"/>
                 <StackPanel.InputBindings>
                     <MouseBinding Command="{Binding CreateCommand}" MouseAction="LeftClick" />
                 </StackPanel.InputBindings>

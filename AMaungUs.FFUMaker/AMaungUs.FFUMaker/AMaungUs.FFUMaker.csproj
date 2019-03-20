@@ -79,8 +79,10 @@
     <Compile Include="Models\BSPManufacturerInfo.cs" />
     <Compile Include="Models\Prerequisite.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\SMBiosInfo.cs" />
     <Compile Include="Models\Workspace.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\CreateProductViewModel.cs" />
     <Compile Include="ViewModels\CreateWorkspaceViewModel.cs" />
     <Compile Include="ViewModels\DelegateCommand.cs" />
     <Compile Include="ViewModels\ImportBSPViewModel.cs" />
