@@ -134,15 +134,19 @@ namespace AMaungUs.FFUMaker.ViewModels
         private void CreateCommandExec(object parm)
         {
             var validateResult = ValidateWorkspace();
-            if (validateResult)
+            if (validateResult && !bkgWorker.IsBusy)
             {
 
                 ExecutingPowershell = true;
                 bkgWorker.RunWorkerAsync();
                 
             }
+            if(bkgWorker.IsBusy)
+            {
+                IsDisabled = true;
+            }
         }
-
+        public bool IsDisabled { get; set; }
             private void BkgWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
             {
                     this.Create(null, new EventArgs());
@@ -195,11 +199,6 @@ namespace AMaungUs.FFUMaker.ViewModels
             psi.CreateNoWindow = true;
             p.StartInfo = psi;
             p.Start();
-            //p.StandardInput.WriteLine("OEM");
-            //p.StandardInput.WriteLine("FAM");
-            //p.StandardInput.WriteLine("1234");
-            //p.StandardInput.WriteLine("RPi2");
-            //p.StandardInput.WriteLine("RPi2");
             p.StandardInput.WriteLine("Exit");
             p.WaitForExit();
             File.Delete(newFilePath);

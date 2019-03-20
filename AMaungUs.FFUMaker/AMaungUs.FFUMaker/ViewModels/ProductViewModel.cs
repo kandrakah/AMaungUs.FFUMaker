@@ -71,6 +71,7 @@ namespace AMaungUs.FFUMaker.ViewModels
             Nullable<bool> dialogresult = createModal.ShowDialog();
             if (dialogresult.Value == true)
             {
+                LoadProducts();
                 //var workspace = ((CreateWorkspaceViewModel)createModal.DataContext).workspace;
                 //Workspaces.Add(workspace);
                 //SaveWorkspaces();
