@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -14,8 +15,8 @@ namespace AMaungUs.FFUMaker.ViewModels
     public class CreateProductViewModel : BaseViewModel
     {
         PrerequisiteViewModel prerequisites;
-
-        public string BSPName;
+        
+        public Workspace ws;
 
         string productName;
         public string ProductName
@@ -57,11 +58,27 @@ namespace AMaungUs.FFUMaker.ViewModels
             set { SetProperty(ref bbProduct, value); }
         }
 
+        bool executingPowershell = false;
+        public bool ExecutingPowershell
+        {
+            get { return executingPowershell; }
+            set { SetProperty(ref executingPowershell, value); }
+        }
+
+        BackgroundWorker bkgWorker;
         public event EventHandler Create;
         public CreateProductViewModel()
         {
+            ws = new Workspace();
             prerequisites = new PrerequisiteViewModel();
-            //RunPowershellScripts();
+            bkgWorker = new BackgroundWorker
+            {
+                WorkerReportsProgress = true,
+                WorkerSupportsCancellation = true
+
+            };
+            bkgWorker.DoWork += BkgWorker_DoWork; ;
+            bkgWorker.RunWorkerCompleted += BkgWorker_RunWorkerCompleted;
         }
 
         System.Windows.Input.ICommand createCommand;
@@ -73,12 +90,23 @@ namespace AMaungUs.FFUMaker.ViewModels
         private void CreateCommandExec(object parm)
         {
             var validateResult = ValidateWorkspace();
-            if (validateResult)
+            if (validateResult && !bkgWorker.IsBusy) 
             {
-                RunPowershellScripts();
-                this.Create(parm, new EventArgs());
+                ExecutingPowershell = true;
+                bkgWorker.RunWorkerAsync();
             }
                 
+        }
+
+        private void BkgWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            this.Create(null, new EventArgs());
+        }
+
+        private void BkgWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            RunPowershellScripts();
+            e.Cancel = true;
         }
         private bool ValidateWorkspace()
         {
@@ -103,8 +131,10 @@ namespace AMaungUs.FFUMaker.ViewModels
                 // and plunk the contents in the textbox
                 commands = sr.ReadToEnd();
             }
-            commands += "\n" + "$newCmd = 'Add-IoTProduct " + ProductName +" "+ BSPName;
-            commands += "invoke-expression  $newCmd";
+            commands += "\n" + "$openworkspacecmd = 'open-ws " + ws.Path + "\\" + ws.Name + "'";
+            commands += "\ninvoke-expression  $openworkspacecmd";
+            commands += "\n" + "$newCmd = 'Add-IoTProduct " + ProductName +" "+ ws.BSPName+"'";
+            commands += "\ninvoke-expression  $newCmd";
             using (StreamWriter sw = new StreamWriter(newFilePath))
             {
                 sw.WriteLine(commands);

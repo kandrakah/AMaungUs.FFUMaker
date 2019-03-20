@@ -67,7 +67,7 @@ namespace AMaungUs.FFUMaker.ViewModels
         private void CreateProductCmdExec(object parm)
         {
             CreateProductModal createModal = new CreateProductModal();
-            ((CreateProductViewModel)createModal.DataContext).BSPName = SelectedWorkspace.BSPName;
+            ((CreateProductViewModel)createModal.DataContext).ws = SelectedWorkspace;
             Nullable<bool> dialogresult = createModal.ShowDialog();
             if (dialogresult.Value == true)
             {

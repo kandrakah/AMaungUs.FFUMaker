@@ -12,12 +12,14 @@ using System.IO;
 using System.Diagnostics;
 using Newtonsoft.Json;
 using System.Windows.Threading;
+using System.Windows;
+using System.Threading;
+using System.ComponentModel;
 
 namespace AMaungUs.FFUMaker.ViewModels
 {
      public class CreateWorkspaceViewModel : BaseViewModel
     {
-
         string workspacePath;
         PrerequisiteViewModel prerequisites;
         private List<BSPManufacturerInfo> bspManufacturerDefinitions;
@@ -96,12 +98,24 @@ namespace AMaungUs.FFUMaker.ViewModels
             set { SetProperty(ref executingPowershell, value); }
         }
         public event EventHandler Create;
+        BackgroundWorker bkgWorker;
         public CreateWorkspaceViewModel()
         {
             prerequisites = new PrerequisiteViewModel();
             OnPropertyChanged("ArchitectureList");
             LoadJson();
+            bkgWorker = new BackgroundWorker
+            {
+                WorkerReportsProgress = true,
+                WorkerSupportsCancellation = true
+
+            };
+            bkgWorker.DoWork += BkgWorker_DoWork; ;
+            bkgWorker.RunWorkerCompleted += BkgWorker_RunWorkerCompleted;
         }
+
+        
+
         private void LoadJson()
         {
             var path = System.AppDomain.CurrentDomain.BaseDirectory;
@@ -122,15 +136,25 @@ namespace AMaungUs.FFUMaker.ViewModels
             var validateResult = ValidateWorkspace();
             if (validateResult)
             {
-                Task.Factory.StartNew(() =>
-                {
-                    ExecutingPowershell = true;
-                });
-                RunPowershellScripts();
-                this.Create(parm, new EventArgs());
+
+                ExecutingPowershell = true;
+                bkgWorker.RunWorkerAsync();
+                
             }
         }
-        private bool ValidateWorkspace()
+
+            private void BkgWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+            {
+                    this.Create(null, new EventArgs());
+            }
+
+            private void BkgWorker_DoWork(object sender, DoWorkEventArgs e)
+            {
+                RunPowershellScripts();
+                e.Cancel = true;
+            }
+
+            private bool ValidateWorkspace()
         {
             if (string.IsNullOrEmpty(WorkspaceName) || string.IsNullOrEmpty(OEMName) || string.IsNullOrEmpty(Architecture) || string.IsNullOrEmpty(WorkspacePath))
                 return false;
