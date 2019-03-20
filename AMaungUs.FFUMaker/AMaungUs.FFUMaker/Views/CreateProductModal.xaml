@@ -10,9 +10,9 @@
         mc:Ignorable="d"
         Background="Black"
         Title="" Height="460" Width="480" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None">
-    <!--<Window.DataContext>
+    <Window.DataContext>
         <vm:CreateProductViewModel/>
-    </Window.DataContext>-->
+    </Window.DataContext>
     <Window.Resources>
         <this2that:BoolToVisibilityConverter x:Key="BoolToVisibility" />
         <Style x:Key="placeHolder" TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">

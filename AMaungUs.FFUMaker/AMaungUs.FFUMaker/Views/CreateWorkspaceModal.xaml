@@ -9,7 +9,7 @@
         xmlns:this2that="clr-namespace:AMaungUs.FFUMaker.Converters"
         mc:Ignorable="d"
         Background="Black"
-        Title="" Height="380" Width="480" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None">
+        Title="" Height="420" Width="480" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None">
     <Window.DataContext>
         <vm:CreateWorkspaceViewModel/>
     </Window.DataContext>
