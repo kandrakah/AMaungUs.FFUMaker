@@ -35,13 +35,21 @@ namespace AMaungUs.FFUMaker.ViewModels
         public string WorkspaceName
         {
             get { return workspaceName; }
-            set { SetProperty(ref workspaceName, value); }
+            set
+            {
+                value = value.Replace(" ", "");
+                SetProperty(ref workspaceName, value);
+            }
         }
         string oemName;
         public string OEMName
         {
             get { return oemName; }
-            set { SetProperty(ref oemName, value); }
+            set
+            {
+                value = value.Replace(" ", "");
+                SetProperty(ref oemName, value);
+            }
         }
 
         string architecture;
